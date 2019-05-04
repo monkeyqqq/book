@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>request demo</title>
+    <script type="text/javascript" src="../lib/jquery/jquery-3.0.0.min.js"></script>
+    <!--
+    videojs
+    -->
+    <link href="//vjs.zencdn.net/4.9/video-js.css" rel="stylesheet">
+    <script src="//vjs.zencdn.net/4.9/video.js"></script>
+
+    <link rel="stylesheet" href="../lib/layui-v2.4.5/layui/css/layui.css">
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+     
+    <title>文章展示</title>
+</head>
+<body onload="Show_user();show_discuss_info();get_article();guanzhu();">
+<ul class="layui-nav" lay-filter="">
+    <li class="layui-nav-item layui-this">
+        <a href="search_school.html">讨论区</a></li>
+    <li class="layui-nav-item">
+        <a href="book.html">书籍</a></li>
+    <li class="layui-nav-item">
+        <a href="video.html">视频</a></li>
+</ul>
+<div id="school_discuss_info">
+    <div id="school_name_info"></div>
+    <div id="school_created_info"></div>
+    <p>帖子数：</p><div id="school_article_count"></div>
+    <a id="guanzhu_btn" onclick="guanzhu()"></a>
+</div>
+<div id="user_photo_info">
+
+</div>
+<!--<img src="/image/44%20(1).jpg" style="width:100px; height:100px; border-radius:50%; "/>-->
+<div id="user_id_info"></div>
+<div id="user_name_info"></div>
+<div id="user_password_info"></div>
+<!--文章展示-->
+
+<button  class="layui-btn" onclick="show_create_article()">
+    <i class="layui-icon">&#xe608;</i> 创建文章
+</button>
+
+
+<div id="article_form">
+    <input id="search_article" type="text" name="title" required lay-verify="required" placeholder="请输入文章关键字" autocomplete="off" class="layui-input" style="width: 200px">
+    <button id="submit_article1" onclick="get_article()" class="layui-btn layui-btn-normal">搜索</button>
+    <div id="article_info"></div>
+
+
+</div>
+<script src="../lib/layui-v2.4.5/layui/layui.js"></script>
+<script type="text/javascript" src="../js/showarticle.js"></script>
+<script type="text/javascript" src="../js/base.js"></script>
+</body>
+</html>

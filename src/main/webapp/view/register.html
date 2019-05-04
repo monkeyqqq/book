@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>request demo</title>
+    <script type="text/javascript" src="../lib/jquery/jquery-3.0.0.min.js"></script>
+    <!--
+    videojs
+    -->
+    <link href="//vjs.zencdn.net/4.9/video-js.css" rel="stylesheet">
+    <script src="//vjs.zencdn.net/4.9/video.js"></script>
+
+    <link rel="stylesheet" href="../lib/layui-v2.4.5/layui/css/layui.css">
+
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+     
+    <title>Title</title>
+</head>
+<body>
+
+
+    <b>请添加头像:</b> <input type="file" id="fileName" style="display: none"/>
+        <button type="button" class="layui-btn" id="register_photo_upload" onclick="fileName.click()">
+            <i class="layui-icon">&#xe67c;</i>上传图片
+        </button>
+    <b>请输入用户名:</b> <input id="R_user_name" type="text" />
+    <b>请输入密码:</b> <input id="R_user_password" type="password" />
+    <b>请输入邮箱:</b> <input id="R_user_email" type="text" />
+    <div id="showimg"></div>
+
+    <button id="submit_user" onclick="User_register()">注册</button>
+    <div id="show_register_info" style="display: none">
+        <div id="fail_info"></div>
+        <button onclick="hide_register_info()">确定</button>
+    </div>
+
+
+
+    <script src="../lib/layui-v2.4.5/layui/layui.js"></script>
+    <script type="text/javascript" src="../js/register.js"></script>
+</body>
+</html>

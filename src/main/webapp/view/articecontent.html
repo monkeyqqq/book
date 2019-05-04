@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">    <meta charset="UTF-8">
+    <title>request demo</title>
+    <script type="text/javascript" src="../lib/jquery/jquery-3.0.0.min.js"></script>
+    <!--
+    videojs
+    -->
+    <link href="//vjs.zencdn.net/4.9/video-js.css" rel="stylesheet">
+    <script src="//vjs.zencdn.net/4.9/video.js"></script>
+    <link rel="stylesheet" href="../lib/layui-v2.4.5/layui/css/layui.css">
+
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+     
+    <title>Title</title>
+</head>
+<body onload="get_article_comments()">
+
+<ul class="layui-nav" lay-filter="">
+    <li class="layui-nav-item layui-this">
+        <a href="search_school.html">讨论区</a></li>
+    <li class="layui-nav-item">
+        <a href="book.html">书籍</a></li>
+    <li class="layui-nav-item">
+        <a href="video.html">视频</a></li>
+</ul>
+
+<div id="article_id"></div>
+<div id="article_title"></div>
+<div id="article_content"></div>
+<p>添加评论:</p>
+<div id="create_comment" type="text" style="width:80px;height:20px" contenteditable="true"></div>
+<button id="subbmit_comments" onclick="create_commnets()">评论</button>
+<div id="article_comments">
+    <table id="Commernts_tab">
+
+        <button type="button" id="comments_record" >回复</button>  <br />
+
+    </table>
+
+</div>
+
+
+
+
+<button value="Back" onclick="goBack()">返回上一页</button>
+<script src="../lib/layui-v2.4.5/layui/layui.js"></script>
+<script type="text/javascript" src="../js/articlecontent.js">
+
+</script>
+</body>
+</html>

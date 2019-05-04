@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>request demo</title>
+    <script type="text/javascript" src="../lib/jquery/jquery-3.0.0.min.js"></script>
+    <!--
+    videojs
+    -->
+    <link href="//vjs.zencdn.net/4.9/video-js.css" rel="stylesheet">
+    <script src="//vjs.zencdn.net/4.9/video.js"></script>
+    <link rel="stylesheet" href="../lib/layui-v2.4.5/layui/css/layui.css">
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+     
+    <title>Title</title>
+</head>
+<body onload="get_user_info();show_guanzhu_info();">
+<div id="user_detail_info">
+    <div id="user_detail_photo_info"></div>
+    <div id="user_detail_id_info"></div>
+    <div id="user_detail_name_info"></div>
+    <button id="infomation_btu" class="layui-btn" onclick="get_new_infomation()">消息<span class="layui-badge-dot layui-bg-orange"></span></button>
+    <div id="infomation_area"></div>
+    <button id="guanzhu_show" onclick="show_guanzhu_btu()">显示已关注</button>
+    <div id="guanzhu_info" style="display: none"></div>
+    <button id="update_user_info" onclick="Show_old_user_info()">更新用户信息</button>
+    <div id="update_info" style="display: none">
+        <div id="update_photo" ></div>
+        <p>请上传头像：</p><input id="update_photo_input" type="file"/>
+        <!--<div id="update_name" ></div>-->
+        <p>请输入新用户名：</p><input id="update_name_input" type="text"/>
+        <!--<div id="update_password" ></div>-->
+        <p>请输入新密码：</p><input id="update_password_input" type="password" />
+        <button id="updata_buttom" onclick="update_user_info()">更新</button><button id="concle_updata" onclick="hide_updata_info()">取消</button>
+    </div>
+    <div id="user_article_num"></div>
+
+</div>
+<script src="../lib/layui-v2.4.5/layui/layui.js"></script>
+<script type="text/javascript" src="../js/userinfo.js"></script>
+</body>
+</html>

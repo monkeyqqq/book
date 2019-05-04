@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>request demo</title>
+    <script type="text/javascript" src="../lib/jquery/jquery-3.0.0.min.js"></script>
+    <!--
+    videojs
+    -->
+    <link href="//vjs.zencdn.net/4.9/video-js.css" rel="stylesheet">
+    <script src="//vjs.zencdn.net/4.9/video.js"></script>
+
+    <link rel="stylesheet" href="../lib/layui-v2.4.5/layui/css/layui.css">
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+     
+    <title>Title</title>
+</head>
+<body>
+<ul class="layui-nav" lay-filter="">
+    <li class="layui-nav-item layui-this">
+        <a href="search_school.html">讨论区</a></li>
+    <li class="layui-nav-item">
+        <a href="book.html">书籍</a></li>
+    <li class="layui-nav-item">
+        <a href="video.html">视频</a></li>
+</ul>
+<b>输入讨论区名称：</b><input id="search_school" name="title" required lay-verify="required" placeholder="请输入讨论区名称" autocomplete="off" class="layui-input" type="text" style="width: 200px" />
+<button id="search_school_b" 	class="layui-btn layui-btn-normal" onclick="Search_school()">搜索</button>
+
+<div id="no_search_school" style="display: none"></div>
+
+<!--script-->
+<script src="../lib/layui-v2.4.5/layui/layui.js"></script>
+<script type="text/javascript" src="../js/search_school.js"></script>
+</body>
+</html>
