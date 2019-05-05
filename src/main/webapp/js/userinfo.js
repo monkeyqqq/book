@@ -4,7 +4,7 @@ function get_user_info() {
 
     var user_photo_info = user_data.user_photo;
     var photo_href= "<a href=\"userinfo.html\"><img src=\"/image/"+user_photo_info+ "\" style=\"width:100px; height:100px; border-radius:50%; \"/></a>"
-    console.log(photo_href);
+    //console.log(photo_href);
     var bookinfo = document.getElementById("user_detail_photo_info");
     bookinfo.innerHTML= photo_href;
 
@@ -19,9 +19,9 @@ function get_user_info() {
     user_name_info.innerText=user_name;
 
     $.get("http://localhost:8090/get_a_Byahtuor_id?author_id="+user_id,function (data) {
-        console.log(data);
+        //console.log(data);
         var user_article_l = data.length;
-        console.log(user_article_l);
+        //console.log(user_article_l);
         var user_article = document.getElementById("user_article_num");
         user_article.innerText=user_article_l;
     })
@@ -34,7 +34,7 @@ function Show_old_user_info() {
     $('#update_info').show(500);
     var user_photo_info = user_data.user_photo;
     var photo_href= "<img src=\"/image/"+user_photo_info+ "\" style=\"width:100px; height:100px; border-radius:50%; \"/>"
-    console.log(photo_href);
+    //console.log(photo_href);
     var bookinfo = document.getElementById("update_photo");
     bookinfo.innerHTML= photo_href;
 
@@ -63,7 +63,7 @@ function show_guanzhu_info(){
         var discuss_href="<p></p><a href=\"showarticle.html?school_name=\""+discuss_name+">"+discuss_name+"</a>"
         $("#guanzhu_info").append(discuss_href);
     }
-    var button_href="<button onclick='hide_guanzhu_info()'>收起</button>"
+    var button_href="<button id='hide_updata' onclick='hide_guanzhu_info()' class='layui-btn layui-btn-mini'>收起</button>"
     $("#guanzhu_info").append(button_href);
 }
 function show_guanzhu_btu(){
@@ -95,7 +95,7 @@ function update_pthoto(){
         mimeType:"multipart/form-data",
         processData:false,
         success:function (res) {
-            console.log(res);
+            //console.log(res);
             if(res!=null && res!=''){
                 update_photo_href=res;
             }
@@ -117,7 +117,7 @@ function update_user_info() {
    var str = sessionStorage.obj;
    var user_data = $.parseJSON(str);
    var user_id = $('#user_detail_id_info').text();
-   console.log(user_id);
+   //console.log(user_id);
    var user_name= $('#update_name_input').val();
    var user_password=$('#update_password_input').val();
    var user_photo = update_photo_href;
@@ -169,20 +169,52 @@ function get_new_infomation() {
 
 
     $.get("http://localhost:8090/get_a_Byahtuor_id?author_id="+author_id,function (data) {
-        console.log(data);
+        //console.log(data);
+        var j=0;
         for(var i=0;i<data.length;i++){
          if(data[i].article_new_comment == "false"){
          var info_gref="<p></p><a href=\"articecontent.html?article_id="+data[i].article_id+"\" onclick=\"update_article_read("+data[i].article_id+")\">"+data[i].article_title+"</a>";
          $("#infomation_area").append(info_gref);
+         j=j+1;
          }
         }
+        if(j==0){
+            $("#infomation_area").append("暂无新评论");
+        }
+    })
+}
+function update_article_read(article_id) {
+    var read_info="true";
+    $.get("http://localhost:8090/Update_article_new_comment_info?article_new_comment="+read_info+"&article_id="+article_id,function (data) {
+        //console.log(data);
     })
 }
 
 
-function update_article_read(article_id) {
+
+function get_new_reply() {
+    var str = sessionStorage.obj;
+    var user_data = $.parseJSON(str);
+    var author_id= user_data.user_id;
+    var new_reply =document.getElementById("reply_area");
+    new_reply.innerHTML='';
+   $.get("http://localhost:8090/getByComments_author_id?comment_author_id="+author_id,function (data) {
+       var j=0;
+       for(var i = 0 ; i < data.length ; i++){
+           if(data[i].comment_read == "false"){
+               var reply_href="<p></p><a href=\"articecontent.html?article_id="+data[i].article_id+"\" onclick=\"update_comment_read("+data[i].comment_id+")\">第"+data[i].article_id+"篇文章有新回复</a>"
+               $("#reply_area").append(reply_href);
+               j=j+1;
+           }
+       }
+       if(j==0){
+           $("#reply_area").append("暂无新评论");
+       }
+   })
+}
+function update_comment_read(comment_id) {
     var read_info="true";
-    $.get("http://localhost:8090/Update_article_new_comment_info?article_new_comment="+read_info+"&article_id="+article_id,function (data) {
-        console.log(data);
+    $.get("http://localhost:8090/Update_comment_byId?comment_read="+read_info+"&comment_id="+comment_id,function (data) {
+        //console.log(data);
     })
 }

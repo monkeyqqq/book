@@ -11,13 +11,15 @@
     <script src="//vjs.zencdn.net/4.9/video.js"></script>
 
     <link rel="stylesheet" href="../lib/layui-v2.4.5/layui/css/layui.css">
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/showarticle.css">
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
      
     <title>文章展示</title>
 </head>
-<body onload="Show_user();show_discuss_info();get_article();guanzhu();">
+<body onload="show_discuss_info();get_article();guanzhu();">
 <ul class="layui-nav" lay-filter="">
     <li class="layui-nav-item layui-this">
         <a href="search_school.html">讨论区</a></li>
@@ -25,33 +27,39 @@
         <a href="book.html">书籍</a></li>
     <li class="layui-nav-item">
         <a href="video.html">视频</a></li>
+    <li class="layui-nav-item">
+        <a href="userinfo.html">我的</a>
+    </li>
 </ul>
-<div id="school_discuss_info">
+
+<div class="show_school_all_div">
+
+<div id="school_discuss_info" class="school_discuss_info_div">
     <div id="school_name_info"></div>
-    <div id="school_created_info"></div>
-    <p>帖子数：</p><div id="school_article_count"></div>
+    <p id="school_create_time_info">创建于:</p><div id="school_created_info"></div>
+    <p id="school_article_count_info">帖子数:</p><div id="school_article_count"></div>
     <a id="guanzhu_btn" onclick="guanzhu()"></a>
 </div>
-<div id="user_photo_info">
+<!--<div id="user_photo_info">-->
 
-</div>
+<!--</div>-->
 <!--<img src="/image/44%20(1).jpg" style="width:100px; height:100px; border-radius:50%; "/>-->
-<div id="user_id_info"></div>
-<div id="user_name_info"></div>
-<div id="user_password_info"></div>
+<!--<div id="user_id_info"></div>-->
+<!--<div id="user_name_info"></div>-->
+<!--<div id="user_password_info"></div>-->
 <!--文章展示-->
 
-<button  class="layui-btn" onclick="show_create_article()">
+<button id="create_article_btu" class="layui-btn" onclick="show_create_article()">
     <i class="layui-icon">&#xe608;</i> 创建文章
 </button>
 
 
-<div id="article_form">
-    <input id="search_article" type="text" name="title" required lay-verify="required" placeholder="请输入文章关键字" autocomplete="off" class="layui-input" style="width: 200px">
+
+    <input id="search_article" type="text" name="title" required lay-verify="required" placeholder="请输入文章关键字"  class="layui-input" style="width: 200px">
     <button id="submit_article1" onclick="get_article()" class="layui-btn layui-btn-normal">搜索</button>
     <div id="article_info"></div>
-
-
+    <button id="up_page_btu" onclick="up_page()">上一页</button>
+    <button id="next_page_btu" onclick="next_page()">下一页</button>
 </div>
 <script src="../lib/layui-v2.4.5/layui/layui.js"></script>
 <script type="text/javascript" src="../js/showarticle.js"></script>

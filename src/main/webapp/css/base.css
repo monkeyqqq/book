@@ -1,0 +1,11 @@
+.all_div{
+    width: 900px;
+    border: #4E5465 1px solid;
+    position: absolute;
+    right: 200px;
+}
+.input_style{
+    width:200px;
+    height: 36px;
+
+}

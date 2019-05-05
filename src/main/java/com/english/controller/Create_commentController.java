@@ -16,9 +16,19 @@ public class Create_commentController {
     public void Create_comments(
             @RequestParam(value = "comment_content", required = true) String comment_content,
             @RequestParam(value = "article_id", required = true) String article_id,
-            @RequestParam(value = "comment_author_id", required = true) String comment_author_id,
-            @RequestParam(value = "comment_read", required = true) String comment_read
+            @RequestParam(value = "comment_author_id", required = true) String comment_author_id
     ){
-        Create_commentMapper.Create_comments(comment_content,article_id,comment_author_id,comment_read);
+        Create_commentMapper.Create_comments(comment_content,article_id,comment_author_id);
     }
+
+
+    @RequestMapping("/Update_comment_byId")
+    public void Update_comment_byId(
+            @RequestParam(value = "comment_read", required = true) String comment_read,
+            @RequestParam(value = "comment_id", required = true) String comment_id
+    ){
+        Create_commentMapper.Update_comment_byId(comment_read,comment_id);
+    }
+
+
 }

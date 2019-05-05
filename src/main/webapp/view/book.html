@@ -9,7 +9,7 @@
     -->
     <link href="//vjs.zencdn.net/4.9/video-js.css" rel="stylesheet">
     <script src="//vjs.zencdn.net/4.9/video.js"></script>
-
+    <link rel="stylesheet" href="../css/base.css">
     <link rel="stylesheet" href="../lib/layui-v2.4.5/layui/css/layui.css">
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -28,11 +28,16 @@
     <li class="layui-nav-item">
         <a href="video.html">视频</a>
     </li>
+    <li class="layui-nav-item">
+        <a href="userinfo.html">我的</a>
+    </li>
 </ul>
+<div class="all_div">
 <input id="search_book_input" type="text" name="title" required lay-verify="required" placeholder="请输入书名" autocomplete="off" class="layui-input" style="width: 200px" />
 <button id="search_book_button" onclick="get_Book()" class="layui-btn layui-btn-normal" >搜索</button>
 <div id="search_results">
 
+</div>
 </div>
 <script src="../lib/layui-v2.4.5/layui/layui.js"></script>
 <script type="text/javascript" src="../js/book.js"></script>

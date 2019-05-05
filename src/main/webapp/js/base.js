@@ -8,7 +8,7 @@ function Show_user(){
         var user_data = $.parseJSON(str);
         var user_photo_info = user_data.user_photo;
         var photo_href= "<a href=\"userinfo.html\"><img src=\"/image/"+user_photo_info+ "\" style=\"width:100px; height:100px; border-radius:50%; \"/></a>"
-        console.log(photo_href);
+
         var bookinfo = document.getElementById("user_photo_info");
         bookinfo.innerHTML= photo_href;
 

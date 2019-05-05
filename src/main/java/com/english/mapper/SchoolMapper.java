@@ -16,6 +16,9 @@ public interface SchoolMapper {
     School_discussEntity getByschool_name(String school_name);
 
 
-    @Insert("INSERT INTO school (school_name) VALUES (#{school_name});")
-    void Create_disscussByname(@Param("school_name") String school_name);
+    @Insert("INSERT INTO school (school_name,create_author) VALUES (#{school_name},#{create_author});")
+    void Create_disscussByname(
+            @Param("school_name") String school_name,
+            @Param("create_author") String create_author
+    );
 }

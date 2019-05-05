@@ -21,7 +21,7 @@ function User_register(){
         mimeType:"multipart/form-data",
         processData:false,
         success:function (res) {
-            console.log(res);
+            //console.log(res);
 
 
             var photo_href= "<img src=\"/image/"+res+ "\" style=\"width:100px; height:100px; border-radius:50%; \"/>"
@@ -63,7 +63,7 @@ function Upload_file(){
         mimeType:"multipart/form-data",
         processData:false,
         success:function (res) {
-            console.log(res)
+            //console.log(res)
         },
         error:function () {
             alert("请求失败。")
@@ -82,7 +82,7 @@ function check_user_name(){
     var R_user_name = $('#R_user_name').val();
     var register_info = document.getElementById("fail_info");
     $.get("http://localhost:8090/checkByuser_name?user_name="+R_user_name,function (data) {
-        console.log(data);
+       // console.log(data);
         if(data!=null && data!=''){
             $('#show_register_info').show(500);
             register_info.innerText="用户名已存在！"

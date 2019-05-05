@@ -19,7 +19,10 @@ public class SchoolController {
     }
 
     @RequestMapping("/Create_disscussByname")
-    public void Create_disscussByname(@RequestParam(value = "school_name",required = true) String school_name){
-        SchoolMapper.Create_disscussByname(school_name);
+    public void Create_disscussByname(
+            @RequestParam(value = "school_name",required = true) String school_name,
+            @RequestParam(value = "create_author",required = true) String create_author
+    ){
+        SchoolMapper.Create_disscussByname(school_name,create_author);
     }
 }

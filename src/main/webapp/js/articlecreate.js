@@ -10,10 +10,11 @@ layui.use('layedit', function(){
     layedit_c.set({
         uploadImage: {
             url: 'http://localhost:8090/fileUpload_lay'
-            ,type: 'post' //默认post
+            ,type: 'post'
+            //默认post
         }
     });
-     index = layedit_c.build('demo',{hideTool:['left', 'center', 'right']});
+     index = layedit_c.build('demo',{hideTool:['left', 'center', 'right'],height: 200});
 
 });
 
@@ -35,7 +36,7 @@ function upload_article_img() {
         mimeType: "multipart/form-data",
         processData: false,
         success: function (res) {
-            console.log(res);
+
 
             var photo_href = "<img src=\"/image/" + res + "\" style=\"width:100px; height:100px;  \"/>"
             $('#article_c ').append(photo_href);
@@ -49,14 +50,18 @@ function upload_article_img() {
 
 
 function Create_article() {
-    var id = $('#user_id_info').text();
+    //var id = $('#user_id_info').text();
+
+    var str = sessionStorage.obj;
+    var user_data = $.parseJSON(str);
+    var id = user_data.user_id;
     // var article_c = $('#article_c').val();
     // var school_href = location.href;
     // var school_name_l =school_href.split('=')[1];
     var school_name = decodeURI(location.href.split('=')[1]);
-    console.log(school_name);
+
     var article_lay_c = layedit_c.getContent(index);
-    console.log(article_lay_c);
+
     // var article_c = $('#article_c').html();
 
     // console.log(article_c);
@@ -67,10 +72,10 @@ function Create_article() {
     var article_t = $('#article_t').val();
 
     $.post("http://localhost:8090/Insert",{"article_title":article_t,"article_summary": article_s,"article_content" : article_lay_c,"author_id":id,"article_from":school_name},function (data) {
-        console.log(data);
+        var bookinfo = document.getElementById("article_info");
+        bookinfo.innerText = "发布成功";
     })
-    var bookinfo = document.getElementById("article_info");
-    bookinfo.innerText = "发布成功";
+
 }
 
 

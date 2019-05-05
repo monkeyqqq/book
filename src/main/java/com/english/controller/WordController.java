@@ -23,7 +23,7 @@ public class WordController {
     @Autowired
     private WordMapper WordMapper;
 
-    int a;
+
     
     @Autowired
     private WordService WordService;

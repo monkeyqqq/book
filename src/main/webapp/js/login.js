@@ -5,7 +5,7 @@ function User_login(){
     var user_password = $('#use_password').val();
     var login_info = document.getElementById("login_fail_info");
     $.get("http://localhost:8090/getByuser_name?user_name="+user_name+"&user_password=" + user_password,function (data) {
-        console.log(data);
+        //console.log(data);
         user_data = data;
         if(data== ''){
             $('#show_login_info').show(500);
@@ -41,7 +41,7 @@ function login_check_user_name(){
     var login_info = document.getElementById("login_fail_info");
     if(R_user_name!=null && R_user_name!=''){
     $.get("http://localhost:8090/checkByuser_name?user_name="+R_user_name,function (data) {
-        console.log(data);
+        //console.log(data);
         if(data!=null && data!=''){
             $('#show_login_info').hide(500);
         }

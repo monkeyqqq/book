@@ -18,7 +18,19 @@ public class Search_commentsController {
 
 
     @RequestMapping("/getByComments_article_id")
-    public List<CommentsEntity> getByComments_article_id(@RequestParam(value = "article_id",required = true) int article_id){
+    public List<CommentsEntity> getByComments_article_id(
+            @RequestParam(value = "article_id",required = true) int article_id
+    ){
        return  Search_commentsMapper.getByComments_article_id(article_id);
     }
+
+
+
+    @RequestMapping("/getByComments_author_id")
+    public List<CommentsEntity> getByComments_author_id(
+            @RequestParam(value = "comment_author_id",required = true) int comment_author_id
+    ){
+        return  Search_commentsMapper.getByComments_author_id(comment_author_id);
+    }
+
 }

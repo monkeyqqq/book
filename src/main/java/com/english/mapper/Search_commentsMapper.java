@@ -10,7 +10,7 @@ import java.util.List;
 
 @Component
 public interface Search_commentsMapper {
-    @Select("SELECT * FROM comments WHERE article_id = #{article_id}")
+    @Select("SELECT * FROM comments WHERE article_id = #{article_id} ORDER BY comment_created DESC ")
     @Results({
             @Result(property = "comment_id", column = "comment_id"),
             @Result(property = "comment_content",column = "comment_content"),
@@ -20,4 +20,18 @@ public interface Search_commentsMapper {
 
     })
     List<CommentsEntity> getByComments_article_id(int article_id);
+
+
+
+    @Select("SELECT *from comments WHERE comment_author_id = #{comment_author_id} ORDER BY comment_created DESC ")
+    @Results({
+            @Result(property = "comment_id", column = "comment_id"),
+            @Result(property = "comment_content",column = "comment_content"),
+            @Result(property = "article_id", column = "article_id"),
+            @Result(property = "comment_author_id", column = "comment_author_id"),
+            @Result(property = "comment_created", column = "comment_created"),
+            @Result(property = "comment_read", column = "comment_read")
+    })
+    List<CommentsEntity> getByComments_author_id(int comment_author_id);
+
 }

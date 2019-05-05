@@ -48,4 +48,11 @@ public class Search_articleController {
     ){
         return Search_articleMapper.get_a_Byarticle_from(article_from);
     }
+
+    @RequestMapping("/get_article_Byarticle_from")
+    public List<ArticleEntity> get_article_Byarticle_from(
+            @RequestParam(value = "article_from",required = true) String  article_from
+    ){
+        return Search_articleMapper.get_article_Byarticle_from(article_from);
+    }
 }

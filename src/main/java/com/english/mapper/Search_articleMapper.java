@@ -12,7 +12,7 @@ import java.util.List;
 @Component
 public interface Search_articleMapper {
     @Select("SELECT * from article WHERE article_from = #{article_from}" +
-            " And(article_title like #{article_keyword} OR article_summary like #{article_keyword});")
+            " And(article_title like #{article_keyword} OR article_summary like #{article_keyword}) ORDER BY article_created DESC ;")
     @Results({
             @Result(property = "article_title", column = "article_title"),
             @Result(property = "article_summary",column = "article_summary"),
@@ -48,5 +48,14 @@ public interface Search_articleMapper {
     @Select("SELECT count(*) from article WHERE article_from = #{article_from}")
     int get_a_Byarticle_from(String article_from);
 
-
+    @Select("SELECT * from article WHERE article_from = #{article_from} ORDER BY article_created DESC ")
+    @Results({
+            @Result(property = "article_id" ,column="article_id"),
+            @Result(property = "article_title", column = "article_title"),
+            @Result(property = "article_summary",column = "article_summary"),
+            @Result(property = "article_content", column = "article_content"),
+            @Result(property = "author_id", column = "author_id"),
+            @Result(property = "article_new_comment", column = "article_new_comment")
+    })
+    List<ArticleEntity> get_article_Byarticle_from(String article_from);
 }

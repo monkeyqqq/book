@@ -1,0 +1,50 @@
+.all_article_create_div{
+    width: 900px;
+    height: 600px;
+    border: #4E5465 1px solid;
+    background-color:#e2e2e2;
+    position: absolute;
+    right: 200px;
+}
+.article_t_create_font{
+    font-size: 15px;
+    position: relative;
+
+}
+.article_s_create_font{
+    font-size: 15px;
+    position: relative;
+
+}
+.article_c_create_font{
+    font-size: 15px;
+    position: relative;
+
+}
+#article_t{
+    position: relative;
+    background-color:#e2e2e2;
+}
+#article_s{
+    position: relative;
+    background-color:#e2e2e2;
+
+}
+#demo{
+    position: absolute;
+
+}
+#article_create{
+    width: 600px;
+    height: 500px;
+    border: #4E5465 1px solid;
+
+    position: relative;
+    left:150px;
+    top:50px;
+}
+#submit_article{
+    position: relative;
+    left:230px;
+    top:30px;
+}

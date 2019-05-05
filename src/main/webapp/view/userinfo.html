@@ -10,6 +10,9 @@
     <link href="//vjs.zencdn.net/4.9/video-js.css" rel="stylesheet">
     <script src="//vjs.zencdn.net/4.9/video.js"></script>
     <link rel="stylesheet" href="../lib/layui-v2.4.5/layui/css/layui.css">
+    <link rel="stylesheet" href="../css/base.css">
+
+
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
@@ -17,26 +20,53 @@
     <title>Title</title>
 </head>
 <body onload="get_user_info();show_guanzhu_info();">
+<div>
+    <ul class="layui-nav" lay-filter="">
+        <li class="layui-nav-item">
+            <a href="search_school.html">讨论区</a>
+        </li>
+        <li class="layui-nav-item">
+            <a href="book.html">书籍</a>
+        </li>
+        <li class="layui-nav-item">
+            <a href="video.html">视频</a>
+        </li>
+        <li class="layui-nav-item layui-this">
+            <a href="userinfo.html">我的</a>
+        </li>
+    </ul>
+</div>
+<div class="all_div">
 <div id="user_detail_info">
     <div id="user_detail_photo_info"></div>
     <div id="user_detail_id_info"></div>
     <div id="user_detail_name_info"></div>
-    <button id="infomation_btu" class="layui-btn" onclick="get_new_infomation()">消息<span class="layui-badge-dot layui-bg-orange"></span></button>
+    <p>用户发表文章数：</p><div id="user_article_num"></div>
+
+    <button id="infomation_btu" class="layui-btn" onclick="get_new_infomation()">新评论<span class="layui-badge-dot layui-bg-orange"></span></button>
     <div id="infomation_area"></div>
-    <button id="guanzhu_show" onclick="show_guanzhu_btu()">显示已关注</button>
+
+    <button id="reply_btu" class="layui-btn" onclick="get_new_reply()">新回复<span class="layui-badge-dot layui-bg-orange"></span></button>
+    <div id="reply_area"></div>
+
+    <button id="guanzhu_show" onclick="show_guanzhu_btu()" class="layui-btn">显示已关注</button><p></p>
     <div id="guanzhu_info" style="display: none"></div>
-    <button id="update_user_info" onclick="Show_old_user_info()">更新用户信息</button>
+    <button id="update_user_info" onclick="Show_old_user_info()" class="layui-btn">更新用户信息</button>
     <div id="update_info" style="display: none">
         <div id="update_photo" ></div>
-        <p>请上传头像：</p><input id="update_photo_input" type="file"/>
+        <p>请上传头像：</p><input id="update_photo_input" type="file" style="display: none"/>
+        <button type="button" class="layui-btn" id="register_photo_upload" onclick="update_photo_input.click()">
+            <i class="layui-icon">&#xe67c;</i>上传图片
+        </button>
         <!--<div id="update_name" ></div>-->
         <p>请输入新用户名：</p><input id="update_name_input" type="text"/>
         <!--<div id="update_password" ></div>-->
         <p>请输入新密码：</p><input id="update_password_input" type="password" />
-        <button id="updata_buttom" onclick="update_user_info()">更新</button><button id="concle_updata" onclick="hide_updata_info()">取消</button>
+        <button id="updata_buttom" onclick="update_user_info()" class="layui-btn layui-btn-warm">更新</button><button id="concle_updata" onclick="hide_updata_info()" class="layui-btn layui-btn-primary">取消</button>
     </div>
-    <div id="user_article_num"></div>
 
+
+</div>
 </div>
 <script src="../lib/layui-v2.4.5/layui/layui.js"></script>
 <script type="text/javascript" src="../js/userinfo.js"></script>

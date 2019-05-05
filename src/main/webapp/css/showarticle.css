@@ -1,0 +1,97 @@
+.show_school_all_div{
+    width: 900px;
+    height:1300px;
+    border: #4E5465 1px solid;
+    position: absolute;
+    right: 200px;
+}
+.school_discuss_info_div{
+    width:900px;
+    heigh:250px;
+    background-color: #808679;
+    position: relative;
+    top:20px;
+}
+
+/*设置讨论区名字文字大小*/
+#school_name_info{
+    font-size: 30px;
+}
+
+#guanzhu_btn{
+    position: absolute;
+    left: 190px;
+    top:3px;
+}
+
+#school_article_count_info{
+    position: absolute;
+    left: 500px;
+    top:20px;
+}
+
+#school_article_count{
+    position: absolute;
+    left: 550px;
+    top:22px;
+}
+
+#school_create_time_info{
+    position: relative;
+    left: 10px;
+    top:10px;
+}
+
+#school_created_info{
+    position: relative;
+    left: 60px;
+    top:-7px;
+}
+
+
+#create_article_btu{
+    position: relative;
+    left: 50px;
+    top:28px;
+}
+
+#search_article{
+    position: relative;
+    left: 500px;
+    top:-9px;
+}
+
+#submit_article1{
+    position: relative;
+    left: 705px;
+    top:-47px;
+}
+/*文字域*/
+.article_href_div{
+    width: 898px;
+    height:100px;
+    border:#E9E7E7  1px solid;
+}
+
+
+.article_title{
+    font-size:20px ;
+    color: #007DDB;
+    position: relative;
+    left:20px;
+    top:10px ;
+}
+
+.article_summary{
+    font-size:17px ;
+    position: relative;
+    left:20px;
+    top:35px ;
+}
+.article_create_div{
+    font-size:15px ;
+    color: #f8b757;
+    position: relative;
+    left: 650px;
+    top:20px ;
+}

@@ -10,7 +10,7 @@ import java.util.List;
 
 @Component
 public interface Search_comments_replyMapper {
-    @Select("SELECT * from comments_reply WHERE comments_id = #{comments_id};")
+    @Select("SELECT * from comments_reply WHERE comments_id = #{comments_id} ORDER BY comments_reply_created DESC ;")
     @Results({
             @Result(property = "comments_reply_content", column = "comments_reply_content"),
             @Result(property = "comments_reply_author_id",column = "comments_reply_author_id"),
