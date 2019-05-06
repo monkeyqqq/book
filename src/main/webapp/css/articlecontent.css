@@ -64,3 +64,10 @@
     left: 30px;
     top: -35px;
 }
+
+.reply_content_class{
+    position: relative;
+    left:60px;
+    top: -40px;
+    font-size: 15px;
+}

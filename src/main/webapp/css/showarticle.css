@@ -3,7 +3,7 @@
     height:1300px;
     border: #4E5465 1px solid;
     position: absolute;
-    right: 200px;
+    left: 220px;
 }
 .school_discuss_info_div{
     width:900px;
@@ -89,9 +89,22 @@
     top:35px ;
 }
 .article_create_div{
+    width: 300px;
     font-size:15px ;
     color: #f8b757;
     position: relative;
     left: 650px;
     top:20px ;
+}
+
+#up_page_btu {
+    position: relative;
+    left: 350px;
+    top: 10px;
+
+}
+#next_page_btu{
+    position: relative;
+    left: 350px;
+    top: 10px;
 }

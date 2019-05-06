@@ -54,9 +54,9 @@ function showCommentsData(data) {
 
         str = "<div class='comments_div'><div><div id=\"comment_user_photo"+i+"\" class=\"comment_user_photo_div\"></div><div id=\"user_name"+i+"\" class=\"comment_user_name_div\"></div><hr><div>" + data[i].comment_content + "</div><div>" + data[i].comment_created + "</div><div class=\"reply_button\" style='padding-top: 20px'><button id=\""+"f"+data[i].comment_id+"f"+data[i].comment_author_id +"\" onclick=\"show_reply_input(this.id" +
             ")\" class=\"layui-btn layui-btn-sm layui-btn-normal\">回复</button></div><div class=\"show_reply_button\"><button id=\""+data[i].comment_id+"\" onclick=\"showcomments_reply(this.id)\" class=\"layui-btn layui-btn-sm layui-btn-normal\">查看回复</button></div></div>  " +
-            "<div><div> <div id=\"reply_div"+"f"+data[i].comment_id+"f"+data[i].comment_author_id+"\" style=\"display: none;\" class=\"reply_button_div\">\n" +
-            "        <p>回复：</p><input id=\"comments_reply_v"+"f"+data[i].comment_id+"f"+data[i].comment_author_id +"\" type=\"text\" />\n" +
-            "        <button id=\"v"+"f"+data[i].comment_id+"f"+data[i].comment_author_id+"\" onclick=\"hide_reply_input(this.id)\" \tclass=\"layui-btn layui-btn-sm layui-btn-normal\">回复</button>\n" +
+            "<div><div> <div id=\"reply_div"+"f"+data[i].comment_id+"f"+data[i].comment_author_id+"\" style=\"display: none; width: 200px\" placeholdr='请输入回复内容' class=\"reply_button_div\">\n" +
+            "        <p>回复：</p><input id=\"comments_reply_v"+"f"+data[i].comment_id+"f"+data[i].comment_author_id +"\" type=\"text\" class='layui-input' />\n" +
+            "        <button id=\"v"+"f"+data[i].comment_id+"f"+data[i].comment_author_id+"\" onclick=\"hide_reply_input(this.id)\" class=\"layui-btn layui-btn-sm layui-btn-normal\" >回复</button>\n" +
             "    </div></div> </div><div class=\"comments_reply_area\"><div><div id=\"show"+data[i].comment_id+"\" style='display: none'><div id=\"reply_tab"+data[i].comment_id+"\"></div><button id=\"v"+data[i].comment_id+"\" onclick=\"hidecomments_reply(this.id)\"  class=\"layui-btn layui-btn-sm layui-btn-normal\">收起</button></div></div></div></div> ";//追加到table中
         $("#Commernts_tab").append(str);
 
@@ -86,7 +86,7 @@ function show_user_info_action(id,i) {
             else{
                 var photo_href= "<a href=\"otheruser.html?user_id="+res.user_id+"\"><img src=\"/image/"+res.user_photo+ "\" style=\"width:40px; height:40px; border-radius:50%; \"/></a>"
             }
-                comment_user_name_info.innerText = res.user_name;
+            comment_user_name_info.innerText = res.user_name;
             comment_user_photo_info.innerHTML=photo_href;
         })
 
@@ -109,11 +109,11 @@ function hidecomments_reply(id){
     $("#"+reply_id_c).hide(500);
 
 }
-var str_href=0;
+
 function showComments_replyData(data,id) {
 
-    var str = sessionStorage.obj;
-    var user_data = $.parseJSON(str);
+    var str_href=0
+
     var show_reply_id="reply_tab"+id;
     document.getElementById(show_reply_id).innerHTML = "";
     var photo_href=0;
@@ -124,36 +124,38 @@ function showComments_replyData(data,id) {
        {
 
         for(var i = 0;i<data.length;i++){
+            var reply_div_href="<div id=\"replyy_div"+data[i].comments_reply_id+"\"><div id=\"reply_user_info"+data[i].comments_reply_id+"\"></div><div id=\"reply_content"+data[i].comments_reply_id+"\" class='reply_content_class'></div></div>"
 
-            str_href = "<div>"+data[i].comments_reply_content+"</div>"
-            console.log("1111111111"+str_href);
+            $("#"+show_reply_id).append(reply_div_href);
+            $("#reply_content"+data[i].comments_reply_id).append("："+data[i].comments_reply_content);
 
-            $.get("http://localhost:8090/getByuser_id?user_id="+data[i].comments_reply_author_id,function (res) {
-                if(user_data.user_id == res.user_id){
-                    photo_href= "<div><a href=\"userinfo.html\"><img src=\"/image/"+res.user_photo+ "\" style=\"width:40px; height:40px; border-radius:50%; \"/></a><p>"+res.user_name+"</p></div>"
-                }
-                else{
-                    photo_href= "<div><a href=\"otheruser.html?user_id="+res.user_id+"\"><img src=\"/image/"+res.user_photo+ "\" style=\"width:40px; height:40px; border-radius:50%; \"/></a><p>"+res.user_name+"</p></div>"
-                }
-                console.log("2222222"+str_href);
+            show_comment_reply_user(data[i].comments_reply_id,data[i].comments_reply_author_id)
 
-            })
-            var all_href="<div>"+photo_href+str_href+"</div>"
-            $("#"+show_reply_id).append(all_href);
+
         }
       }
 
 }
+function show_comment_reply_user(reply_id,id) {
+    var str = sessionStorage.obj;
+    var user_data = $.parseJSON(str);
+    $.get("http://localhost:8090/getByuser_id?user_id="+id,function (res){
 
+        if(user_data.user_id == res.user_id){
+            photo_href= "<a href=\"userinfo.html\"><img src=\"/image/"+res.user_photo+ "\" style=\"width:40px; height:40px; border-radius:50%; \"/></a><p>"+res.user_name+"</p>"
+        }
+        else{
+            photo_href= "<a href=\"otheruser.html?user_id="+res.user_id+"\"><img src=\"/image/"+res.user_photo+ "\" style=\"width:40px; height:40px; border-radius:50%; \"/></a><p>"+res.user_name+"</p>"
+        }
+
+        $("#reply_user_info"+reply_id).append(photo_href);
+    })
+}
 function show_reply_input(id){
     //var reply_button_id= $('#comment_author_id_info').val();
     var reply_button  = "reply_div"+id;
-
-
-
     $("#"+reply_button).show(500);
     //console.log(reply_button);
-
 }
 
 function hide_reply_input(id){
@@ -162,19 +164,19 @@ function hide_reply_input(id){
     var article_id=href_info.split("=")[1];
     //var article_id= $('#article_id').val();
     //console.log(article_id);
-    var comment_id = id.split('f')[1]
+    var comment_id = id.split('f')[1];
     var comments_author_id=id.split('f')[2];
     var str = sessionStorage.obj;
     var user_data = $.parseJSON(str);
     var reply_author_id = user_data.user_id;
 
-    var reply_input="comments_reply_"+id
-    var reply_content = $("#"+reply_input).val()
+    var reply_input="comments_reply_"+id;
+    var reply_content = $("#"+reply_input).val();
     //console.log(reply_content)
     if(reply_content!=''){
     $.get("http://localhost:8090/Create_comments_reply?comments_reply_content="+reply_content+"&comments_reply_author_id=" + reply_author_id+"&comments_author_id=" + comments_author_id+"&article_id="+article_id+"&comments_id="+comment_id,function (data) {
         //console.log(data);
-        var comment_read="false"
+        var comment_read="false";
      $.get("http://localhost:8090/Update_comment_byId?comment_read="+comment_read+"&comment_id="+comment_id,function (data) {
         // console.log(data);
      })
