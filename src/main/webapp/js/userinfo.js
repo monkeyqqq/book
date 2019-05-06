@@ -60,7 +60,7 @@ function show_guanzhu_info(){
     var guanzhu_count = guanzhu_name.split('/').length;
     for(var i=0;i<guanzhu_count;i++){
         var discuss_name = guanzhu_name.split('/')[i];
-        var discuss_href="<p></p><a href=\"showarticle.html?school_name=\""+discuss_name+">"+discuss_name+"</a>"
+        var discuss_href="<p></p><a href=\"showarticle.html?school_name="+discuss_name+"&page=1\">"+discuss_name+"</a>"
         $("#guanzhu_info").append(discuss_href);
     }
     var button_href="<button id='hide_updata' onclick='hide_guanzhu_info()' class='layui-btn layui-btn-mini'>收起</button>"

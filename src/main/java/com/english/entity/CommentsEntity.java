@@ -12,5 +12,5 @@ public class CommentsEntity {
     private String comment_created;
     private String comment_author_id;
     private String comment_read;
-
+    private String comment_author_name;
 }

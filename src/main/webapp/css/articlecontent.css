@@ -13,6 +13,7 @@
     border: gainsboro 1px solid;
     position: relative;
     left: 20px;
+
 }
 #subbmit_comments{
     position: relative;
@@ -21,7 +22,7 @@
 }
 .comments_div{
     width: 800px;
-    height: 150px;
+
     border: gainsboro 1px solid;
     position: relative;
     left: 50px;
@@ -31,4 +32,35 @@
     width: 800px;
     position: relative;
     left: 50px;
+}
+
+.reply_button{
+    position: relative;
+    left: 740px;
+    top: -50px;
+}
+.show_reply_button{
+    position: relative;
+    left: 716px;
+    top: -45px;
+}
+.reply_button_div{
+    position: relative;
+    left: 550px;
+    top: -45px;
+}
+.comment_user_name_div{
+    position: relative;
+    left: 120px;
+    top: -15px;
+}
+.comment_user_photo_div{
+    position: relative;
+    left: 50px;
+    top: 15px;
+}
+.comments_reply_area{
+    position: relative;
+    left: 30px;
+    top: -35px;
 }

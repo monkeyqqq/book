@@ -171,20 +171,25 @@ function guanzhu(){
     var str = sessionStorage.obj;
     var user_data = $.parseJSON(str);
     var guanzhu_name=user_data.user_links;
-    //console.log(guanzhu_name);
+    console.log(guanzhu_name);
+    if(guanzhu_name!=null&&guanzhu_name!=''){
     var guanzhu_count=guanzhu_name.split('/').length;
     //console.log(guanzhu_count);
-    for(var i=0;i<guanzhu_count;i++){
+    for(var i=0;i<=guanzhu_count;i++){
         //console.log(guanzhu_name.split("/")[i]);
         if(school_name == guanzhu_name.split("/")[i]){
             guanzhu_info.innerHTML="<button class=\"layui-btn layui-btn-mini layui-btn-radius layui-btn-disabled\">已关注</button>";
             break;
         }
-        else if(i == guanzhu_count-1){
+        else if(i == guanzhu_count){
             guanzhu_info.innerHTML="<button class=\"layui-btn layui-btn-radius layui-btn-normal\" onclick=\"guanzhu_up()\">关注</button>";
         }
     }
+    }
+    else{
+        guanzhu_info.innerHTML="<button class=\"layui-btn layui-btn-radius layui-btn-normal\" onclick=\"guanzhu_up()\">关注</button>";
 
+    }
 }
 
 function guanzhu_up(){
@@ -193,7 +198,13 @@ function guanzhu_up(){
     var user_data = $.parseJSON(str);
     var user_id = user_data.user_id;
     var guanzhu_name=user_data.user_links;
-    var up_guanzhu = guanzhu_name +school_name+"/";
+    var up_guanzhu=0;
+    if(guanzhu_name!=null&&guanzhu_name!=''){
+        up_guanzhu = guanzhu_name +school_name+"/";
+    }
+    else {
+         up_guanzhu = school_name+"/";
+    }
     $.get("http://localhost:8090/Update_links?user_id="+user_id+"&user_links="+up_guanzhu,function (data) {
         //console.log("1111111111111111111");
         $.get("http://localhost:8090/getByuser_id?user_id=" + user_id, function (data) {

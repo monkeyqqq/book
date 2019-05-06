@@ -4,12 +4,14 @@
 function get_article_comments() {
     var href_info=location.href;
     var article_id=href_info.split("=")[1];
+    var str = sessionStorage.obj;
+    var user_data = $.parseJSON(str);
     $.get("http://localhost:8090/getByarticle_id?article_id=" +article_id, function (data) {
 
         //
-        var article_id = data.article_id;
-        var article_title_info = document.getElementById("article_id");
-        article_title_info.innerText = article_id;
+        // var article_id = data.article_id;
+        // var article_id_info = document.getElementById("article_id");
+        // article_id_info.innerText = article_id;
         //文章题目
         var article_title = data.article_title;
         var article_title_info = document.getElementById("article_title");
@@ -18,8 +20,26 @@ function get_article_comments() {
         var article_content = data.article_content;
         var article_contene_info = document.getElementById("article_content");
         article_contene_info.innerHTML = article_content;
+
+        var article_create = data.article_created;
+        var article_create_info = document.getElementById("article_create_time")
+        article_create_info.innerText="创建于:"+article_create;
         //搜索评论
         var comment_article_id = data.article_id;
+        var author_id = data.author_id
+        $.get("http://localhost:8090/getByuser_id?user_id="+author_id,function (data) {
+            var article_author =data.user_name;
+            var author_href=0;
+            if(user_data.user_id==data.user_id){
+                author_href="<div>作者:<a href=\"userinfo.html\">"+article_author+"</a></div>"
+            }
+            else {
+                author_href="<div>作者:<a href=\"otheruser.html?user_id="+data.user_id+"\">"+article_author+"</a></div>"
+            }
+            var author_info = document.getElementById("article_author_name");
+            author_info.innerHTML=author_href;
+
+        })
         $.get("http://localhost:8090/getByComments_article_id?article_id=" + comment_article_id, function (data) {
            // console.log(data);
             showCommentsData(data);
@@ -31,16 +51,48 @@ function showCommentsData(data) {
     document.getElementById("Commernts_tab").innerHTML = "";
 
     for (var i = 0; i < data.length; i++) {
-        //拼接表格的行和列
-        str = "<div class='comments_div'><div><div>" + data[i].comment_author_id + "</div><div>" + data[i].comment_content + "</div><div>" + data[i].comment_created + "</div><div><button id=\""+"f"+data[i].comment_id+"f"+data[i].comment_author_id +"\" onclick=\"show_reply_input(this.id" +
-            ")\">回复</button></div><div><button id=\""+data[i].comment_id+"\" onclick=\"showcomments_reply(this.id)\">查看回复</button></div></div>  " +
-            "<div><div> <div id=\"reply_div"+"f"+data[i].comment_id+"f"+data[i].comment_author_id+"\" style=\"display: none;\">\n" +
+
+        str = "<div class='comments_div'><div><div id=\"comment_user_photo"+i+"\" class=\"comment_user_photo_div\"></div><div id=\"user_name"+i+"\" class=\"comment_user_name_div\"></div><hr><div>" + data[i].comment_content + "</div><div>" + data[i].comment_created + "</div><div class=\"reply_button\" style='padding-top: 20px'><button id=\""+"f"+data[i].comment_id+"f"+data[i].comment_author_id +"\" onclick=\"show_reply_input(this.id" +
+            ")\" class=\"layui-btn layui-btn-sm layui-btn-normal\">回复</button></div><div class=\"show_reply_button\"><button id=\""+data[i].comment_id+"\" onclick=\"showcomments_reply(this.id)\" class=\"layui-btn layui-btn-sm layui-btn-normal\">查看回复</button></div></div>  " +
+            "<div><div> <div id=\"reply_div"+"f"+data[i].comment_id+"f"+data[i].comment_author_id+"\" style=\"display: none;\" class=\"reply_button_div\">\n" +
             "        <p>回复：</p><input id=\"comments_reply_v"+"f"+data[i].comment_id+"f"+data[i].comment_author_id +"\" type=\"text\" />\n" +
-            "        <button id=\"v"+"f"+data[i].comment_id+"f"+data[i].comment_author_id+"\" onclick=\"hide_reply_input(this.id)\">回复</button>\n" +
-            "    </div></div> </div><div><div><div id=\"show"+data[i].comment_id+"\" style='display: none'><table id=\"reply_tab"+data[i].comment_id+"\"></table><button id=\"v"+data[i].comment_id+"\" onclick=\"hidecomments_reply(this.id)\">收起</button></div></div></div></div> ";//追加到table中
+            "        <button id=\"v"+"f"+data[i].comment_id+"f"+data[i].comment_author_id+"\" onclick=\"hide_reply_input(this.id)\" \tclass=\"layui-btn layui-btn-sm layui-btn-normal\">回复</button>\n" +
+            "    </div></div> </div><div class=\"comments_reply_area\"><div><div id=\"show"+data[i].comment_id+"\" style='display: none'><div id=\"reply_tab"+data[i].comment_id+"\"></div><button id=\"v"+data[i].comment_id+"\" onclick=\"hidecomments_reply(this.id)\"  class=\"layui-btn layui-btn-sm layui-btn-normal\">收起</button></div></div></div></div> ";//追加到table中
         $("#Commernts_tab").append(str);
+
+        // $.get("http://localhost:8090/getByuser_id?user_id="+data[i].comment_author_id,function (res) {
+        //     var comment_user_name_info= document.getElementById("user_name"+i);
+        //     console.log(res.user_name);
+        //     comment_user_name_info.innerText=res.user_name;
+        // })
+
+        show_user_info_action(data[i].comment_author_id,i);
+
     }
+
 }
+
+function show_user_info_action(id,i) {
+        var str = sessionStorage.obj;
+        var user_data = $.parseJSON(str);
+
+        $.get("http://localhost:8090/getByuser_id?user_id=" + id, function (res) {
+            var comment_user_name_info = document.getElementById("user_name" + i);
+            var comment_user_photo_info = document.getElementById("comment_user_photo"+i);
+            console.log(res.user_name);
+            if(user_data.user_id == res.user_id){
+            var photo_href= "<a href=\"userinfo.html\"><img src=\"/image/"+res.user_photo+ "\" style=\"width:40px; height:40px; border-radius:50%; \"/></a>"
+            }
+            else{
+                var photo_href= "<a href=\"otheruser.html?user_id="+res.user_id+"\"><img src=\"/image/"+res.user_photo+ "\" style=\"width:40px; height:40px; border-radius:50%; \"/></a>"
+            }
+                comment_user_name_info.innerText = res.user_name;
+            comment_user_photo_info.innerHTML=photo_href;
+        })
+
+}
+
+
 function showcomments_reply(id) {
     var div_id="show"+id;
     $("#"+div_id).show(500);
@@ -57,21 +109,39 @@ function hidecomments_reply(id){
     $("#"+reply_id_c).hide(500);
 
 }
+var str_href=0;
 function showComments_replyData(data,id) {
- var str="";
- var show_reply_id="reply_tab"+id;
- document.getElementById(show_reply_id).innerHTML = "";
 
- if(data==''){
-     $("#"+show_reply_id).append("暂无评论");
- }
- else
-     {
-        for(var i = 0;i<data.length;i++){
-            str = "<tr><td>"+data[i].comments_reply_content+"</td></tr>"
-            $("#"+show_reply_id).append(str);
-        }
+    var str = sessionStorage.obj;
+    var user_data = $.parseJSON(str);
+    var show_reply_id="reply_tab"+id;
+    document.getElementById(show_reply_id).innerHTML = "";
+    var photo_href=0;
+    if(data==''){
+         $("#"+show_reply_id).append("暂无评论");
     }
+    else
+       {
+
+        for(var i = 0;i<data.length;i++){
+
+            str_href = "<div>"+data[i].comments_reply_content+"</div>"
+            console.log("1111111111"+str_href);
+
+            $.get("http://localhost:8090/getByuser_id?user_id="+data[i].comments_reply_author_id,function (res) {
+                if(user_data.user_id == res.user_id){
+                    photo_href= "<div><a href=\"userinfo.html\"><img src=\"/image/"+res.user_photo+ "\" style=\"width:40px; height:40px; border-radius:50%; \"/></a><p>"+res.user_name+"</p></div>"
+                }
+                else{
+                    photo_href= "<div><a href=\"otheruser.html?user_id="+res.user_id+"\"><img src=\"/image/"+res.user_photo+ "\" style=\"width:40px; height:40px; border-radius:50%; \"/></a><p>"+res.user_name+"</p></div>"
+                }
+                console.log("2222222"+str_href);
+
+            })
+            var all_href="<div>"+photo_href+str_href+"</div>"
+            $("#"+show_reply_id).append(all_href);
+        }
+      }
 
 }
 
