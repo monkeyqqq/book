@@ -12,6 +12,7 @@ public class Comments_replyEntity {
     private int comments_author_id;
     private int article_id;
     private int comments_id;
+    private String comments_reply_created;
 
 
 }

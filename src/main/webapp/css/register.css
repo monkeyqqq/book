@@ -1,0 +1,37 @@
+.all_register_div{
+    width: 900px;
+    height: 700px;
+    border: #4E5465 1px solid;
+    position: absolute;
+    right: 200px;
+}
+
+
+.register_div{
+    width:500px;
+    height: 600px;
+    position: relative;
+    left:200px;
+    top:100px;
+    background-color:#e2e2e2;
+}
+.register_info_div{
+    width:300px;
+    position: relative;
+    left:120px;
+    top:50px;
+
+}
+.register_return_div{
+    width: 100px;
+    height: 80px;
+    position: relative;
+    background-color: #2D93CA;
+    left:50px;
+    top:-200px;
+}
+.infomation_button{
+    position: relative;
+    left:20px;
+    top:10px;
+}

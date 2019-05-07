@@ -11,6 +11,7 @@
     <script src="//vjs.zencdn.net/4.9/video.js"></script>
 
     <link rel="stylesheet" href="../lib/layui-v2.4.5/layui/css/layui.css">
+    <link rel="stylesheet" href="../css/login.css">
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
@@ -20,17 +21,25 @@
 <body>
 <!--登陆-->
     <div id="user_login">
-       <b>用户名：</b> <input id="user_name" type="text" name="title" required lay-verify="required" placeholder="请输入用户名" autocomplete="off" class="layui-input" style="width: 200px"/>
-       <b>密码：</b> <input id="use_password" type="password" name="title" required lay-verify="required" placeholder="请输入密码" autocomplete="off" class="layui-input" style="width: 200px" />
+        <div class="login_name_div">
+       <p>用户名：</p> <input id="user_name" type="text" name="title" required lay-verify="required" placeholder="请输入用户名" autocomplete="off" class="layui-input" style="width: 200px"/>
+        </div>
+        <div class="login_password_div">
+       <p>密码：</p> <input id="use_password" type="password" name="title" required lay-verify="required" placeholder="请输入密码" autocomplete="off" class="layui-input" style="width: 200px" />
+        </div>
+        <div class="login_button_div">
         <button id="subit_login" onclick="User_login()" class="layui-btn layui-btn-radius">登陆</button>
-
-
+        <a href="register.html"><button class="layui-btn layui-btn-radius">注册</button></a>
+        </div>
     </div>
+
 <div id="show_login_info" style="display: none">
-    <div id="login_fail_info"></div>
+    <div id="login_fail_info" style="margin-top: 30px;margin-left: 10px"></div>
+    <div style="margin-left: 40px;margin-top: 20px">
     <button onclick="hide_login_info()" class="layui-btn layui-btn-sm layui-btn-radius layui-btn-danger">确定</button>
+    </div>
 </div>
-    <a href="register.html">注册新用户</a>
+
 
     <script src="../lib/layui-v2.4.5/layui/layui.js"></script>
     <script type="text/javascript" src="../js/login.js"></script>

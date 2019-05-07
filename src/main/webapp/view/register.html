@@ -12,6 +12,7 @@
 
     <link rel="stylesheet" href="../lib/layui-v2.4.5/layui/css/layui.css">
     <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/register.css">
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
@@ -20,22 +21,35 @@
 </head>
 <body>
 
-<div class="all_div">
-    <b>请添加头像:</b> <input type="file" id="fileName" style="display: none"/>
+<div class="all_register_div">
+    <div class="register_div">
+
+        <div class="register_info_div">
+            <div id="showimg"></div>
+    <p>请添加头像:</p> <input type="file" id="fileName" style="display: none"/>
+    <br>
         <button type="button" class="layui-btn" id="register_photo_upload" onclick="fileName.click()">
             <i class="layui-icon">&#xe67c;</i>上传图片
         </button>
-    <b>请输入用户名:</b> <input id="R_user_name" type="text" />
-    <b>请输入密码:</b> <input id="R_user_password" type="password" />
-    <b>请输入邮箱:</b> <input id="R_user_email" type="text" />
-    <div id="showimg"></div>
+    <br>
+    <p>请输入用户名:</p>
+    <br><input id="R_user_name" type="text" name="title" required lay-verify="required" placeholder="请输入用户名" autocomplete="off" class="layui-input" style="width: 200px" />
+    <br>
+    <p>请输入密码:</p>
+    <br><input id="R_user_password" type="password" name="title" required lay-verify="required" placeholder="请输入密码" autocomplete="off" class="layui-input" style="width: 200px"/>
+    <br>
+    <p>请输入邮箱:</p>
+    <br><input id="R_user_email" type="text" name="title" required lay-verify="required" placeholder="请输入邮箱" autocomplete="off" class="layui-input" style="width: 200px" />
+    <br>
 
-    <button id="submit_user" onclick="User_register()">注册</button>
-    <div id="show_register_info" style="display: none">
+
+    <button id="submit_user" onclick="User_register()" class="layui-btn layui-btn-radius" style="margin-left: 50px">注册</button>
+    <div id="show_register_info" style="display: none" class="register_return_div">
         <div id="fail_info"></div>
-        <button onclick="hide_register_info()">确定</button>
+        <div class="infomation_button"><button onclick="hide_register_info()" class="layui-btn layui-btn-radius">确定</button></div>
     </div>
-
+        </div>
+    </div>
 
 </div>
     <script src="../lib/layui-v2.4.5/layui/layui.js"></script>

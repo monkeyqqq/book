@@ -11,7 +11,7 @@
     <script src="//vjs.zencdn.net/4.9/video.js"></script>
     <link rel="stylesheet" href="../lib/layui-v2.4.5/layui/css/layui.css">
     <link rel="stylesheet" href="../css/base.css">
-
+    <link rel="stylesheet" href="../css/otheruser.css">
 
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -26,7 +26,7 @@
             <a href="search_school.html">讨论区</a>
         </li>
         <li class="layui-nav-item">
-            <a href="book.html">书籍</a>
+            <a href="book.html?page=1">书籍</a>
         </li>
         <li class="layui-nav-item">
             <a href="video.html">视频</a>
@@ -38,34 +38,31 @@
 </div>
 
 
-<div class="all_div">
+<div class="all_otheruser_div">
     <div id="user_detail_info">
-        <div id="user_detail_photo_info"></div>
-        <div id="user_detail_id_info"></div>
-        <div id="user_detail_name_info"></div>
-        <p>用户发表文章数：</p><div id="user_article_num"></div>
+        <div style="margin-left: 200px;margin-top: 100px">
+            <div id="user_detail_photo_info"></div>
+            <span>用户ID：</span>
+            <span id="user_detail_id_info"></span>
+            <br>
+            <br>
+            <span>用户名：</span>
+            <span id="user_detail_name_info"></span>
+            <br>
+            <br>
+            <span>用户发表文章数：</span><span id="user_article_num"></span>
+            <br>
+            <br>
+            <button id="guanzhu_show" onclick="other_show_guanzhu_btu()" class="layui-btn">显示已关注</button><br>
+            <br>
+            <br>
+            <div id="guanzhu_info" style="display: none">
+                <p style="font-size: 20px">他关注的讨论区：</p>
+                <div id="guanzhu_info_div" ></div>
+            </div>
+        </div>
 
-        <!--<button id="infomation_btu" class="layui-btn" onclick="get_new_infomation()">新评论<span class="layui-badge-dot layui-bg-orange"></span></button>-->
-        <!--<div id="infomation_area"></div>-->
 
-        <!--<button id="reply_btu" class="layui-btn" onclick="get_new_reply()">新回复<span class="layui-badge-dot layui-bg-orange"></span></button>-->
-        <!--<div id="reply_area"></div>-->
-
-        <button id="guanzhu_show" onclick="other_show_guanzhu_btu()" class="layui-btn">显示已关注</button><p></p>
-        <div id="guanzhu_info" style="display: none"></div>
-        <!--<button id="update_user_info" onclick="Show_old_user_info()" class="layui-btn">更新用户信息</button>-->
-        <!--<div id="update_info" style="display: none">-->
-            <!--<div id="update_photo" ></div>-->
-            <!--<p>请上传头像：</p><input id="update_photo_input" type="file" style="display: none"/>-->
-            <!--<button type="button" class="layui-btn" id="register_photo_upload" onclick="update_photo_input.click()">-->
-                <!--<i class="layui-icon">&#xe67c;</i>上传图片-->
-            <!--</button>-->
-            <!--&lt;!&ndash;<div id="update_name" ></div>&ndash;&gt;-->
-            <!--<p>请输入新用户名：</p><input id="update_name_input" type="text"/>-->
-            <!--&lt;!&ndash;<div id="update_password" ></div>&ndash;&gt;-->
-            <!--<p>请输入新密码：</p><input id="update_password_input" type="password" />-->
-            <!--<button id="updata_buttom" onclick="update_user_info()" class="layui-btn layui-btn-warm">更新</button><button id="concle_updata" onclick="hide_updata_info()" class="layui-btn layui-btn-primary">取消</button>-->
-        <!--</div>-->
 
 
     </div>

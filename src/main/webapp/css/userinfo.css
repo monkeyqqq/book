@@ -1,0 +1,33 @@
+#show_user_infomation_div{
+    width: 500px;
+    height: 500px;
+    border: #0C0C0C 1px solid;
+    position: relative;
+    left:200px;
+    top:-20px;
+}
+.all_userinfo_div{
+    width:900px;
+    height: 700px;
+}
+.user_infomation_btu{
+    width: 500px;
+    position: relative;
+    left:225px;
+    top:-20px;
+}
+.article_new_infomation_div{
+    position: relative;
+    left:50px;
+    top:20px;
+}
+.user_uodate_div{
+    position: relative;
+    left:100px;
+    top:50px;
+}
+.update_button{
+    position: relative;
+    left:20px;
+    top:20px;
+}

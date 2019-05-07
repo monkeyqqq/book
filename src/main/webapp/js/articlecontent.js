@@ -53,7 +53,7 @@ function showCommentsData(data) {
     for (var i = 0; i < data.length; i++) {
 
         str = "<div class='comments_div'><div><div id=\"comment_user_photo"+i+"\" class=\"comment_user_photo_div\"></div><div id=\"user_name"+i+"\" class=\"comment_user_name_div\"></div><hr><div>" + data[i].comment_content + "</div><div>" + data[i].comment_created + "</div><div class=\"reply_button\" style='padding-top: 20px'><button id=\""+"f"+data[i].comment_id+"f"+data[i].comment_author_id +"\" onclick=\"show_reply_input(this.id" +
-            ")\" class=\"layui-btn layui-btn-sm layui-btn-normal\">回复</button></div><div class=\"show_reply_button\"><button id=\""+data[i].comment_id+"\" onclick=\"showcomments_reply(this.id)\" class=\"layui-btn layui-btn-sm layui-btn-normal\">查看回复</button></div></div>  " +
+            ")\" class=\"layui-btn layui-btn-sm layui-btn-normal\" >回复</button></div><div class=\"show_reply_button\"><button id=\""+data[i].comment_id+"\" onclick=\"showcomments_reply(this.id)\" class=\"layui-btn layui-btn-sm layui-btn-normal\">查看回复</button></div></div>  " +
             "<div><div> <div id=\"reply_div"+"f"+data[i].comment_id+"f"+data[i].comment_author_id+"\" style=\"display: none; width: 200px\" placeholdr='请输入回复内容' class=\"reply_button_div\">\n" +
             "        <p>回复：</p><input id=\"comments_reply_v"+"f"+data[i].comment_id+"f"+data[i].comment_author_id +"\" type=\"text\" class='layui-input' />\n" +
             "        <button id=\"v"+"f"+data[i].comment_id+"f"+data[i].comment_author_id+"\" onclick=\"hide_reply_input(this.id)\" class=\"layui-btn layui-btn-sm layui-btn-normal\" >回复</button>\n" +
@@ -124,7 +124,7 @@ function showComments_replyData(data,id) {
        {
 
         for(var i = 0;i<data.length;i++){
-            var reply_div_href="<div id=\"replyy_div"+data[i].comments_reply_id+"\"><div id=\"reply_user_info"+data[i].comments_reply_id+"\"></div><div id=\"reply_content"+data[i].comments_reply_id+"\" class='reply_content_class'></div></div>"
+            var reply_div_href="<div id=\"replyy_div"+data[i].comments_reply_id+"\"><hr style='width: 730px'><div id=\"reply_user_info"+data[i].comments_reply_id+"\"></div><div id=\"reply_content"+data[i].comments_reply_id+"\" class='reply_content_class'></div><div id=\"reply_time"+data[i].comments_reply_id+"\" class='reply_time'>回复于："+data[i].comments_reply_created+"</div></div>"
 
             $("#"+show_reply_id).append(reply_div_href);
             $("#reply_content"+data[i].comments_reply_id).append("："+data[i].comments_reply_content);
@@ -142,10 +142,10 @@ function show_comment_reply_user(reply_id,id) {
     $.get("http://localhost:8090/getByuser_id?user_id="+id,function (res){
 
         if(user_data.user_id == res.user_id){
-            photo_href= "<a href=\"userinfo.html\"><img src=\"/image/"+res.user_photo+ "\" style=\"width:40px; height:40px; border-radius:50%; \"/></a><p>"+res.user_name+"</p>"
+            photo_href= "<a href=\"userinfo.html\"><img src=\"/image/"+res.user_photo+ "\" style=\"width:30px; height:30px; border-radius:50%; \"/></a><p style='font-size: 10px'>"+res.user_name+"</p>"
         }
         else{
-            photo_href= "<a href=\"otheruser.html?user_id="+res.user_id+"\"><img src=\"/image/"+res.user_photo+ "\" style=\"width:40px; height:40px; border-radius:50%; \"/></a><p>"+res.user_name+"</p>"
+            photo_href= "<a href=\"otheruser.html?user_id="+res.user_id+"\"><img src=\"/image/"+res.user_photo+ "\" style=\"width:30px; height:30px; border-radius:50%; \"/></a><p style='font-size: 10px'>"+res.user_name+"</p>"
         }
 
         $("#reply_user_info"+reply_id).append(photo_href);

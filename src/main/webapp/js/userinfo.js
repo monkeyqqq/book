@@ -32,6 +32,9 @@ function Show_old_user_info() {
     var str = sessionStorage.obj;
     var user_data = $.parseJSON(str);
     $('#update_info').show(500);
+    $('#infomation_area').hide(500);
+    $('#reply_area').hide(500);
+    $('#guanzhu_info').hide(500);
     var user_photo_info = user_data.user_photo;
     var photo_href= "<img src=\"/image/"+user_photo_info+ "\" style=\"width:100px; height:100px; border-radius:50%; \"/>"
     //console.log(photo_href);
@@ -58,16 +61,19 @@ function show_guanzhu_info(){
     var guanzhu_info =document.getElementById("guanzhu_info");
     guanzhu_info.innerHTML='';
     var guanzhu_count = guanzhu_name.split('/').length;
-    for(var i=0;i<guanzhu_count;i++){
+    for(var i=0;i<guanzhu_count-1;i++){
         var discuss_name = guanzhu_name.split('/')[i];
-        var discuss_href="<p></p><a href=\"showarticle.html?school_name="+discuss_name+"&page=1\">"+discuss_name+"</a>"
+        var discuss_href="<div class='article_new_infomation_div'><p style=\"font-size: 20px;color: #3F3F3F\">你关注的讨论区：</p><a href=\"showarticle.html?school_name="+discuss_name+"&page=1\" style='font-size: 20px;color: #009688'>"+discuss_name+"</a></div>"
         $("#guanzhu_info").append(discuss_href);
     }
-    var button_href="<button id='hide_updata' onclick='hide_guanzhu_info()' class='layui-btn layui-btn-mini'>收起</button>"
-    $("#guanzhu_info").append(button_href);
+    // var button_href="<button id='hide_updata' onclick='hide_guanzhu_info()' class='layui-btn layui-btn-mini'>收起</button>"
+    // $("#guanzhu_info").append(button_href);
 }
 function show_guanzhu_btu(){
     $("#guanzhu_info").show(500);
+    $('#infomation_area').hide(500);
+    $('#update_info').hide(500);
+    $('#reply_area').hide(500);
 }
 function hide_guanzhu_info(){
     $("#guanzhu_info").hide(500);
@@ -167,13 +173,16 @@ function get_new_infomation() {
     var new_info =document.getElementById("infomation_area");
     new_info.innerHTML='';
 
-
+    $('#infomation_area').show(500);
+    $('#update_info').hide(500);
+    $('#reply_area').hide(500);
+    $("#guanzhu_info").hide(500);
     $.get("http://localhost:8090/get_a_Byahtuor_id?author_id="+author_id,function (data) {
         //console.log(data);
         var j=0;
         for(var i=0;i<data.length;i++){
          if(data[i].article_new_comment == "false"){
-         var info_gref="<p></p><a href=\"articecontent.html?article_id="+data[i].article_id+"\" onclick=\"update_article_read("+data[i].article_id+")\">"+data[i].article_title+"</a>";
+         var info_gref="<div class='article_new_infomation_div'><p style='font-size: 18px;color: #2E2D3C'>你发表的文章：</p><a href=\"articecontent.html?article_id="+data[i].article_id+"\" onclick=\"update_article_read("+data[i].article_id+")\" style='font-size: 20px;color: #1E9FFF'>"+data[i].article_title+"--有新评论点击查看</a></div>";
          $("#infomation_area").append(info_gref);
          j=j+1;
          }
@@ -198,11 +207,16 @@ function get_new_reply() {
     var author_id= user_data.user_id;
     var new_reply =document.getElementById("reply_area");
     new_reply.innerHTML='';
+
+    $('#reply_area').show(500);
+    $('#update_info').hide(500);
+    $("#guanzhu_info").hide(500);
+    $('#infomation_area').hide(500);
    $.get("http://localhost:8090/getByComments_author_id?comment_author_id="+author_id,function (data) {
        var j=0;
        for(var i = 0 ; i < data.length ; i++){
            if(data[i].comment_read == "false"){
-               var reply_href="<p></p><a href=\"articecontent.html?article_id="+data[i].article_id+"\" onclick=\"update_comment_read("+data[i].comment_id+")\">第"+data[i].article_id+"篇文章有新回复</a>"
+               var reply_href="<div class='article_new_infomation_div'><p style='font-size: 18px;color: #0C0C0C'>您的评论有新回复：</p><a href=\"articecontent.html?article_id="+data[i].article_id+"\" onclick=\"update_comment_read("+data[i].comment_id+")\" style='font-size: 20px;color: #01AAED'>第"+data[i].article_id+"篇文章有新回复</a></div>"
                $("#reply_area").append(reply_href);
                j=j+1;
            }

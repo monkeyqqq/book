@@ -10,6 +10,7 @@
     <link href="//vjs.zencdn.net/4.9/video-js.css" rel="stylesheet">
     <script src="//vjs.zencdn.net/4.9/video.js"></script>
     <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/book.css">
     <link rel="stylesheet" href="../lib/layui-v2.4.5/layui/css/layui.css">
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -23,7 +24,7 @@
         <a href="search_school.html">讨论区</a>
     </li>
     <li class="layui-nav-item layui-this">
-        <a href="book.html">书籍</a>
+        <a href="book.html?page=1">书籍</a>
     </li>
     <li class="layui-nav-item">
         <a href="video.html">视频</a>
@@ -32,13 +33,15 @@
         <a href="userinfo.html">我的</a>
     </li>
 </ul>
-<div class="all_div">
-<input id="search_book_input" type="text" name="title" required lay-verify="required" placeholder="请输入书名" autocomplete="off" class="layui-input" style="width: 200px" />
-<button id="search_book_button" onclick="get_Book()" class="layui-btn layui-btn-normal" >搜索</button>
+<div class="all_book_div">
+<input id="search_book_input" type="text" name="title" required lay-verify="required" placeholder="请输入书名"  class="layui-input" style="width: 200px" />
+<button id="search_book_button" onclick="search_button_action()" class="layui-btn layui-btn-normal" >搜索</button>
 <div id="search_results">
 
 </div>
+    <div id="book_button_div" style="display: none"><button onclick="up_book_page()">上一页</button> <button onclick="next_book_page()">下一页</button></div>
 </div>
+
 <script src="../lib/layui-v2.4.5/layui/layui.js"></script>
 <script type="text/javascript" src="../js/book.js"></script>
 </body>

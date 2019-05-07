@@ -35,11 +35,13 @@
 }
 
 .reply_button{
+    width: 50px;
     position: relative;
     left: 740px;
     top: -50px;
 }
 .show_reply_button{
+    width: 50px;
     position: relative;
     left: 716px;
     top: -45px;
@@ -66,8 +68,18 @@
 }
 
 .reply_content_class{
+    width: 700px;
     position: relative;
     left:60px;
-    top: -40px;
+    top: -35px;
     font-size: 15px;
+}
+
+
+.reply_time{
+    width: 200px;
+    position: relative;
+    left:560px;
+    top: -10px;
+    font-size: 10px;
 }

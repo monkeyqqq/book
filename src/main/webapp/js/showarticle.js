@@ -108,7 +108,7 @@ function Show_all_article() {
         //     article_summary_info.innerText = article_summary;
         // }
         show_article_data(data,page_num);
-        page_number=data.length/10 +1;
+        page_number=Math.ceil(data.length/10);
     })
 }
 

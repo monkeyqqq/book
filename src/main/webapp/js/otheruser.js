@@ -31,13 +31,13 @@ function other_show_guanzhu_info(){
     var user_id = location.href.split('=')[1];
     $.get("http://localhost:8090/getByuser_id?user_id="+user_id,function (user_data) {
         var guanzhu_name = user_data.user_links;
-        var guanzhu_info =document.getElementById("guanzhu_info");
+        var guanzhu_info =document.getElementById("guanzhu_info_div");
         guanzhu_info.innerHTML='';
         var guanzhu_count = guanzhu_name.split('/').length;
         for(var i=0;i<guanzhu_count;i++){
             var discuss_name = guanzhu_name.split('/')[i];
-            var discuss_href="<p></p><a href=\"showarticle.html?school_name="+discuss_name+"&page=1\">"+discuss_name+"</a>"
-            $("#guanzhu_info").append(discuss_href);
+            var discuss_href="<p></p><a href=\"showarticle.html?school_name="+discuss_name+"&page=1\" style='font-size: 18px;color: #01AAED'>"+discuss_name+"</a>"
+            $("#guanzhu_info_div").append(discuss_href);
         }
     })
 

@@ -9,4 +9,7 @@ public class BookEntity {
     private int num;
     private String book_name;
     private int price;
+    private String book_photo;
+    private String book_category;
+    private String book_introduction;
 }

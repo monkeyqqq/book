@@ -14,7 +14,8 @@ public interface Search_comments_replyMapper {
     @Results({
             @Result(property = "comments_reply_content", column = "comments_reply_content"),
             @Result(property = "comments_reply_author_id",column = "comments_reply_author_id"),
-            @Result(property = "comments_author_id", column = "comments_author_id")
+            @Result(property = "comments_author_id", column = "comments_author_id"),
+            @Result(property = "comments_reply_created",column = "comments_reply_created")
     })
     List<Comments_replyEntity> getreplyByComments_id(int comments_id);
 

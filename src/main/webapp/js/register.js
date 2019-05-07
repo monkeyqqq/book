@@ -24,7 +24,7 @@ function User_register(){
             //console.log(res);
 
 
-            var photo_href= "<img src=\"/image/"+res+ "\" style=\"width:100px; height:100px; border-radius:50%; \"/>"
+            var photo_href= "<img src=\"/image/"+res+ "\" style=\"width:50px; height:50px; border-radius:50%; \"/>"
 
             imginfo.innerHTML= photo_href;
 
