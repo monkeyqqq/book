@@ -1,0 +1,63 @@
+.buy_book_class{
+    width: 900px;
+    height:1000px;
+    border: #4E5465 1px solid;
+    position: relative;
+    left: 200px;
+}
+#book_deal{
+    width: 700px;
+    position: relative;
+    left: 100px;
+    top:100px;
+}
+.book_deal_div{
+    width: 500px;
+    height: 150px;
+    background-color:#e2e2e2;
+    position: relative;
+    left: 100px;
+}
+#customer_info_div{
+    position: relative;
+    left: 200px;
+    top:100px
+}
+.buy_book_num_input{
+    position: relative;
+    left: 630px;
+    top:-125px
+}
+.zf_book_name_div{
+    position: relative;
+    left: 350px;
+    top:-60px
+}
+.zf_book_price_div{
+    position: relative;
+    left: 400px;
+    top:-35px
+}
+.zf_book_price_d_div{
+    position: relative;
+    left: 356px;
+    top:-19px
+}
+.zf_book_price_y_div{
+    position: relative;
+    left: 420px;
+    top:-53px
+}
+
+
+.zf_book_num_div{
+    position: relative;
+    left: 20px;
+    top:10px
+}
+.zf_book_photo_div{
+    position: relative;
+    left: 170px;
+    top:10px
+}
+

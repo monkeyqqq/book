@@ -1,0 +1,71 @@
+.book_detail_div{
+    width: 900px;
+
+    border: #4E5465 1px solid;
+    position: relative;
+    left: 225px;
+}
+#book_name{
+    font-size: 25px;
+    position: relative;
+    left: 225px;
+    top:50px;
+}
+
+#book_introduction{
+    width:300px ;
+    height: 450px;
+    background-color: #D0D0D0;
+    position: relative;
+    left: 150px;
+    top:80px;
+}
+
+
+#book_photo_1{
+    position: relative;
+    left: 500px;
+    top:-50px;
+}
+
+#book_photo_2{
+    position: relative;
+    left: 150px;
+    top:50px;
+}
+#book_price{
+    font-size: 20px;
+    position: relative;
+    left: 650px;
+    top:-100px;
+}
+.book_danjia{
+    font-size: 20px;
+    position: relative;
+    left: 590px;
+    top:-78px;
+}
+.book_yuan{
+    font-size: 20px;
+    position: relative;
+    left: 676px;
+    top:-126px;
+}
+#book_t_button{
+    position: relative;
+    left: 600px;
+    top:-50px;
+}
+#book_comment_button{
+    position: relative;
+    left: 750px;
+    top:-92px;
+}
+
+.book_comment_z_div{
+    width: 800px;
+
+    border: gainsboro 1px solid;
+    position: relative;
+    left: 50px;
+}

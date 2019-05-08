@@ -31,4 +31,15 @@ public class Create_commentController {
     }
 
 
+    @RequestMapping("/Create_book_comments")
+    public void Create_book_comments(
+            @RequestParam(value = "comment_content", required = true) String comment_content,
+            @RequestParam(value = "book_id", required = true) String book_id,
+            @RequestParam(value = "comment_author_id", required = true) String comment_author_id,
+            @RequestParam(value = "comment_author_name",required = true) String comment_author_name,
+            @RequestParam(value = "comment_author_photo",required = true) String comment_author_photo
+    ){
+        Create_commentMapper.Create_book_comments(comment_content,book_id,comment_author_id,comment_author_name,comment_author_photo);
+    }
+
 }

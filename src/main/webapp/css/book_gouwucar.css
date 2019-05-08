@@ -1,0 +1,35 @@
+.all_book_div{
+    width: 900px;
+    height:1000px;
+    border: #4E5465 1px solid;
+    position: absolute;
+    right: 200px;
+}
+
+#gouwucar_div{
+    width:700px ;
+    height: 700px;
+    display: flex;
+    flex-direction:row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    position: relative;
+    left: 100px;
+    top:100px;
+}
+.gouwucar_book{
+    width: 200px;
+    height: 300px;
+    background-color: #2D93CA;
+    box-shadow: #0C0C0C 8px 8px 5px;
+}
+.clear_button{
+    position: relative;
+    left: 650px;
+    top:30px;
+}
+
+input[type="checkbox"] {
+    border: 1px solid #01cd78;
+    zoom: 150%;
+}

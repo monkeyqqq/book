@@ -15,5 +15,6 @@ public class UserEntity {
     private String user_created;
     private String user_role;
     private String user_articlecount;
+    private String user_book;
 
 }

@@ -21,4 +21,15 @@ public interface Create_commentMapper {
           @Param("comment_read") String comment_read,
           @Param("comment_id") String comment_id
   );
+
+  @Insert("INSERT INTO comments (comment_content,book_id,comment_author_id,comment_author_name,comment_author_photo)" +
+          " VALUES(#{comment_content},#{book_id},#{comment_author_id},#{comment_author_name},#{comment_author_photo})")
+  void Create_book_comments(
+          @Param("comment_content") String comment_content,
+          @Param("book_id") String book_id,
+          @Param("comment_author_id") String comment_author_id,
+          @Param("comment_author_name") String comment_author_name,
+          @Param("comment_author_photo") String comment_author_photo
+
+  );
 }

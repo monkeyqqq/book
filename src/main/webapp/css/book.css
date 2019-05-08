@@ -10,11 +10,12 @@
     width:700px ;
     height: 700px;
     display: flex;
-    flex-direction: column;
+    flex-direction:row;
     flex-wrap: wrap;
     justify-content: space-around;
     position: relative;
     left: 100px;
+    top:100px;
 }
 
 .book_info_div{
@@ -23,4 +24,41 @@
     background-color: #2D93CA;
     box-shadow: #0C0C0C 8px 8px 5px;
 
+}
+.search_book_div{
+    position: relative;
+    left:300px;
+    top:70px;
+}
+#book_button_div{
+    position: relative;
+    left:370px;
+    top:100px;
+}
+
+.book_gouwucar_photo_class{
+    position: relative;
+    left:800px;
+    top:20px;
+}
+
+.search_book_num{
+    position: relative;
+    left:10px;
+    top:10px;
+}
+.search_book_name{
+    position: relative;
+    left:30px;
+    top:30px;
+}
+.search_book_photo{
+    position: relative;
+    left:5px;
+    top:20px;
+}
+.search_book_price{
+    position: relative;
+    left:30px;
+    top:30px;
 }

@@ -33,4 +33,11 @@ public class Search_commentsController {
         return  Search_commentsMapper.getByComments_author_id(comment_author_id);
     }
 
+
+    @RequestMapping("/getBybook_Comments_article_id")
+    public List<CommentsEntity> getBybook_Comments_article_id(
+            @RequestParam(value = "book_id",required = true) int book_id
+    ){
+        return  Search_commentsMapper.getBybook_Comments_article_id(book_id);
+    }
 }

@@ -79,4 +79,13 @@ public class UserRegisterController {
     ){
         UserRegisterMapper.Update_links(user_links,user_id);
     }
+
+
+    @RequestMapping("/Update_book")
+    public void Update_book(
+            @RequestParam(value = "user_book", required = true) String user_book,
+            @RequestParam(value = "user_id", required = true) String user_id
+    ){
+        UserRegisterMapper.Update_book(user_book,user_id);
+    }
 }

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>request demo</title>
+    <script type="text/javascript" src="../lib/jquery/jquery-3.0.0.min.js"></script>
+    <!--
+    videojs
+    -->
+    <link href="//vjs.zencdn.net/4.9/video-js.css" rel="stylesheet">
+    <script src="//vjs.zencdn.net/4.9/video.js"></script>
+    <link rel="stylesheet" href="../css/base.css">
+    <!--<link rel="stylesheet" href="../css/book.css">-->
+    <link rel="stylesheet" href="../css/buybook.css">
+    <link rel="stylesheet" href="../lib/layui-v2.4.5/layui/css/layui.css">
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+     
+    <title>Title</title>
+</head>
+<body onload="make_deal()">
+<div class="buy_book_class">
+<div id="book_deal">
+
+</div>
+<div id="customer_info_div">
+    <p>收货人姓名：</p>
+    <input id="book_buyer_name" type="text" required lay-verify="required" placeholder="请输入收货人姓名" class="layui-input" style="width: 200px" />
+    <p>收货人手机号：</p>
+    <input id="book_buyer_number" type="text" required lay-verify="required" placeholder="请输入手机号" class="layui-input" style="width: 200px"/>
+    <p>收货人地址：</p>
+    <input id="adress_input" type="text" required lay-verify="required" placeholder="请输入收货地址" class="layui-input" style="width: 300px"/>
+    <button onclick="pay_for()" class="layui-btn layui-btn-danger">立即付款</button>
+</div>
+</div>
+<script src="../lib/layui-v2.4.5/layui/layui.js"></script>
+<script type="text/javascript" src="../js/buybook.js" ></script>
+</body>
+</html>

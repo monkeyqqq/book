@@ -57,4 +57,12 @@ public interface UserRegisterMapper {
 
     );
 
+    @Update("UPDATE user SET user_book=#{user_book} WHERE user_id=#{user_id}")
+    void Update_book(
+
+            @Param("user_book") String user_book,
+            @Param("user_id") String user_id
+
+    );
+
 }

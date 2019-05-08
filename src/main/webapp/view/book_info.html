@@ -10,7 +10,7 @@
     <link href="//vjs.zencdn.net/4.9/video-js.css" rel="stylesheet">
     <script src="//vjs.zencdn.net/4.9/video.js"></script>
     <link rel="stylesheet" href="../css/base.css">
-    <link rel="stylesheet" href="../css/book.css">
+    <link rel="stylesheet" href="../css/bookinfo.css">
     <link rel="stylesheet" href="../lib/layui-v2.4.5/layui/css/layui.css">
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -18,12 +18,25 @@
      
     <title>Title</title>
 </head>
-<body onload="get_book_detail_info()">
+<body onload="get_book_detail_info();get_book_commetns()">
 <div class="book_detail_div">
+
     <div id="book_name"></div>
-    <div id="book_photo"></div>
     <div id="book_introduction"></div>
-    <div id="book_price"></div>
+    <div id="book_photo_1"></div>
+    <div id="book_photo_2"></div>
+
+    <span class="book_danjia"> 单价：</span><div id="book_price"></div><span class="book_yuan">元</span>
+    <div id="book_t_button"><button class="layui-btn layui-btn-warm" onclick="put_book_in_car()">加入购物车</button><button class="layui-btn layui-btn-danger" onclick="buy_Book()">立即购买</button></div>
+    <p>添加评论:</p>
+    <!--<div id="comment_demo" type="text" style="width:80px;height:20px;" contenteditable="true"></div>-->
+    <div  class="book_comments_create_div">
+        <textarea id="book_comment_demo" style="display: none"></textarea>
+    </div>
+    <button id="book_comment_button" onclick="create_book_commnets()" 	class="layui-btn layui-btn-normal">评论</button>
+    <div id="book_comments_infomation">
+
+    </div>
 </div>
 
 <script src="../lib/layui-v2.4.5/layui/layui.js"></script>

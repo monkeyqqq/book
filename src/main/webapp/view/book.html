@@ -34,12 +34,19 @@
     </li>
 </ul>
 <div class="all_book_div">
-<input id="search_book_input" type="text" name="title" required lay-verify="required" placeholder="请输入书名"  class="layui-input" style="width: 200px" />
-<button id="search_book_button" onclick="search_button_action()" class="layui-btn layui-btn-normal" >搜索</button>
-<div id="search_results">
+    <div class="book_gouwucar_photo_class"><a href="book_gouwucar.html"><img src="../bookimage/gouwucar.png" width="30px" height="30px"></a></div>
 
-</div>
-    <div id="book_button_div" style="display: none"><button onclick="up_book_page()">上一页</button> <button onclick="next_book_page()">下一页</button></div>
+    <div class="search_book_div">
+        <input id="search_book_input" type="text" name="title" required lay-verify="required" placeholder="请输入书名"  class="layui-input" style="width: 200px;" />
+        <button id="search_book_button" onclick="search_button_action()" class="layui-btn layui-btn-normal" style="margin-top: -56px;margin-left: 210px;">搜索</button>
+    </div>
+    <div id="search_results">
+
+    </div>
+    <div id="book_button_div" style="display: none">
+        <button onclick="up_book_page()" 	class="layui-btn">上一页</button>
+        <button onclick="next_book_page()" 	class="layui-btn">下一页</button>
+    </div>
 </div>
 
 <script src="../lib/layui-v2.4.5/layui/layui.js"></script>

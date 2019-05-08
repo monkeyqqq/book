@@ -13,4 +13,6 @@ public class CommentsEntity {
     private String comment_author_id;
     private String comment_read;
     private String comment_author_name;
+    private String comment_author_photo;
+    private int book_id;
 }
