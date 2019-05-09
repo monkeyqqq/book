@@ -42,4 +42,16 @@ public class Create_commentController {
         Create_commentMapper.Create_book_comments(comment_content,book_id,comment_author_id,comment_author_name,comment_author_photo);
     }
 
+
+    @RequestMapping("/Create_video_comments")
+    public void Create_video_comments(
+            @RequestParam(value = "comment_content", required = true) String comment_content,
+            @RequestParam(value = "video_id", required = true) String video_id,
+            @RequestParam(value = "comment_author_id", required = true) String comment_author_id,
+            @RequestParam(value = "comment_author_name",required = true) String comment_author_name,
+            @RequestParam(value = "comment_author_photo",required = true) String comment_author_photo
+    ){
+        Create_commentMapper.Create_video_comments(comment_content,video_id,comment_author_id,comment_author_name,comment_author_photo);
+    }
+
 }

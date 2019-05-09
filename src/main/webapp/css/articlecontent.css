@@ -28,6 +28,17 @@
     left: 50px;
 }
 
+.s_comments_time_class{
+    position: relative;
+    left: 50px;
+    top:20px;
+}
+
+.s_comments_content_class{
+    position: relative;
+    left: 50px;
+}
+
 .comments_create_div{
     width: 800px;
     position: relative;

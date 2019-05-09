@@ -1,19 +1,20 @@
 var self_b ;
-var book_key_word_= $('#search_book_input').val();
+var b_key_word_null=decodeURI( location.href.split('=')[1].split('&')[0]);
 window.onload = function() {
     self_b = this;
 
     var key_word = location.href.split('=')[1];
+
     if (key_word == 1 ) {
 
         this.get_random_book();
         $("#book_button_div").hide(500);
     }
     else {
-
-        this.get_Book();
-        $("#book_button_div").show(500);
-
+        if(b_key_word_null!=null&&b_key_word_null!='') {
+            this.get_Book();
+            $("#book_button_div").show(500);
+        }
 
     }
 }
@@ -35,7 +36,7 @@ function showData(data) {
     var str = "";//定义用于拼接的字符串
     document.getElementById("search_results").innerHTML = "";
     var book_page=location.href.split('=')[2];
-    for (var i = (book_page-1)*6; i <book_page*6 ; i++) {
+    for (var i = (book_page-1)*6; i <book_page*6 &&data[i] ; i++) {
         //拼接表格的行和列
         str = "<a href=\"book_info.html?book_id="+data[i].num+"\"><div class='book_info_div'><div class='search_book_num'>图书编号：" + data[i].num + "</div><div class='search_book_photo'><img src='../bookimage/"+data[i].book_photo.split('/')[0]+"' width='150px' height='180px'></div><div class='search_book_name'>图书名称：" + data[i].book_name + "</div><div class='search_book_price'>单价：" + data[i].price + "元</div></div></a>";//追加到table中
         $("#search_results").append(str);
@@ -44,10 +45,12 @@ function showData(data) {
 var book_page_number=0;
 function search_button_action() {
     var key_word_info = $('#search_book_input').val();
-    window.location.href = "book.html?key_word="+encodeURI(key_word_info)+"&page=1";
-    //var key_word = decodeURI(location.href.split('=')[1].split('&')[0]);
+    if(key_word_info!=null&&key_word_info!='') {
+        window.location.href = "book.html?key_word=" + encodeURI(key_word_info) + "&page=1";
+        //var key_word = decodeURI(location.href.split('=')[1].split('&')[0]);
 
-    get_Book();
+        get_Book();
+    }
 }
 function get_Book(){
     var num = decodeURI(location.href.split('=')[1].split('&')[0]);
@@ -59,9 +62,14 @@ function get_Book(){
     if(num!=null&&num!=''){
     //if(isNaN(numval)) {
         $.get("http://localhost:8090/getByBook_name?book_name=" + num, function (data) {
+           if(data.length==0){
+               $("#search_results").append("暂无搜索结果！");
+           }
+           else {
             console.log(data);
             book_page_number=Math.ceil(data.length/6);
             showData(data);
+           }
             //var Booktra = data.book_name;
             // var bookinfo = document.getElementById("bookinfo");
             //bookinfo.innerText = Booktra;

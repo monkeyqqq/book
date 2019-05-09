@@ -2,15 +2,15 @@ function make_deal() {
     var book_id=location.href.split('=')[1];
     if(book_id.indexOf("/") == -1) {
         $.get("http://localhost:8090/getByNum?num=" + book_id, function (data) {
-          var book_str="<div class='book_deal_div'><div>"+data.book_name+"</div><div id='price/"+data.num+"'>"+data.price+"</div></div><input id='num/"+data.num+"' type='number' placeholder='1' oninput=\"if( value < 1 ){value = ''}\" style='height: 40px;width: 30px'/>";
-          $("#book_deal").append(book_str);
+            var book_str="<div class='book_deal_div'><div class='zf_book_num_div'>图书编号："+data.num+"</div><div class='zf_book_photo_div'><img src='../bookimage/"+data.book_photo.split('/')[0]+"' width='100px',height='100px'></div><div class='zf_book_name_div'>图书名称："+data.book_name+"</div><span class='zf_book_price_d_div'>单价：</span><div class='zf_book_price_div' id='price_"+data.num+"'>"+data.price+"</div><span class='zf_book_price_y_div'>元</span></div><div class='buy_book_num_input'><span>数量：</span><input  id='num/"+data.num+"' type='number' value=\"1\" min=\"1\"  style='height: 100px;width: 50px;'/></div>";
+            $("#book_deal").append(book_str);
         })
     }
     else {
         var book_length = book_id.split('/').length;
         for(var i=0;i<book_length-1;i++){
             $.get("http://localhost:8090/getByNum?num=" + book_id.split('/')[i], function (data) {
-                var book_str="<div class='book_deal_div'><div class='zf_book_num_div'>图书编号："+data.num+"</div><div class='zf_book_photo_div'><img src='../bookimage/"+data.book_photo.split('/')[0]+"' width='100px',height='150px'></div><div class='zf_book_name_div'>图书名称："+data.book_name+"</div><span class='zf_book_price_d_div'>单价：</span><div class='zf_book_price_div' id='price_"+data.num+"'>"+data.price+"</div><span class='zf_book_price_y_div'>元</span></div><div class='buy_book_num_input'><span>数量：</span><input  id='num/"+data.num+"' type='number' value=\"1\" min=\"1\"  style='height: 100px;width: 50px;'/></div>";
+                var book_str="<div class='book_deal_div'><div class='zf_book_num_div'>图书编号："+data.num+"</div><div class='zf_book_photo_div'><img src='../bookimage/"+data.book_photo.split('/')[0]+"' width='100px',height='100px'></div><div class='zf_book_name_div'>图书名称："+data.book_name+"</div><span class='zf_book_price_d_div'>单价：</span><div class='zf_book_price_div' id='price_"+data.num+"'>"+data.price+"</div><span class='zf_book_price_y_div'>元</span></div><div class='buy_book_num_input'><span>数量：</span><input  id='num/"+data.num+"' type='number' value=\"1\" min=\"1\"  style='height: 100px;width: 50px;'/></div>";
                 $("#book_deal").append(book_str);
             })
         }

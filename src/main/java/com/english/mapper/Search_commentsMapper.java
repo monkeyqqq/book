@@ -47,4 +47,17 @@ public interface Search_commentsMapper {
 
     })
     List<CommentsEntity> getBybook_Comments_article_id(int book_id);
+
+    @Select("SELECT * FROM comments WHERE video_id = #{video_id} ORDER BY comment_created DESC ")
+    @Results({
+            @Result(property = "comment_id", column = "comment_id"),
+            @Result(property = "comment_content",column = "comment_content"),
+            @Result(property = "video_id", column = "video_id"),
+            @Result(property = "comment_author_id", column = "comment_author_id"),
+            @Result(property = "comment_created", column = "comment_created"),
+            @Result(property = "comment_author_name",column = "comment_author_name"),
+            @Result(property = "comment_author_photo",column = "comment_author_photo")
+
+    })
+    List<CommentsEntity> getByvideo_Comments_article_id(int video_id);
 }

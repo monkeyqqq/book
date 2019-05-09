@@ -52,7 +52,7 @@ function showCommentsData(data) {
 
     for (var i = 0; i < data.length; i++) {
 
-        str = "<div class='comments_div'><div><div id=\"comment_user_photo"+i+"\" class=\"comment_user_photo_div\"></div><div id=\"user_name"+i+"\" class=\"comment_user_name_div\"></div><hr><div>" + data[i].comment_content + "</div><div>" + data[i].comment_created + "</div><div class=\"reply_button\" style='padding-top: 20px'><button id=\""+"f"+data[i].comment_id+"f"+data[i].comment_author_id +"\" onclick=\"show_reply_input(this.id" +
+        str = "<div class='comments_div'><div><div id=\"comment_user_photo"+i+"\" class=\"comment_user_photo_div\"></div><div id=\"user_name"+i+"\" class=\"comment_user_name_div\"></div><hr><div class='s_comments_content_class'>" + data[i].comment_content + "</div><div class='s_comments_time_class'>" + data[i].comment_created + "</div><div class=\"reply_button\" style='padding-top: 20px'><button id=\""+"f"+data[i].comment_id+"f"+data[i].comment_author_id +"\" onclick=\"show_reply_input(this.id" +
             ")\" class=\"layui-btn layui-btn-sm layui-btn-normal\" >回复</button></div><div class=\"show_reply_button\"><button id=\""+data[i].comment_id+"\" onclick=\"showcomments_reply(this.id)\" class=\"layui-btn layui-btn-sm layui-btn-normal\">查看回复</button></div></div>  " +
             "<div><div> <div id=\"reply_div"+"f"+data[i].comment_id+"f"+data[i].comment_author_id+"\" style=\"display: none; width: 200px\" placeholdr='请输入回复内容' class=\"reply_button_div\">\n" +
             "        <p>回复：</p><input id=\"comments_reply_v"+"f"+data[i].comment_id+"f"+data[i].comment_author_id +"\" type=\"text\" class='layui-input' />\n" +

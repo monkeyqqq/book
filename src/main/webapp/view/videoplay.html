@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>request demo</title>
+    <script type="text/javascript" src="../lib/jquery/jquery-3.0.0.min.js"></script>
+    <!--
+    videojs
+    -->
+    <link href="//vjs.zencdn.net/4.9/video-js.css" rel="stylesheet">
+    <script src="//vjs.zencdn.net/4.9/video.js"></script>
+    <link rel="stylesheet" href="../lib/layui-v2.4.5/layui/css/layui.css">
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/videoplay.css">
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+       
+    <title>Title</title>
+</head>
+<body onload="play_video();get_video_commetns()">
+
+<div class="all_video_play_div">
+    <div class="up_board_div"></div>
+    <div class="video-btn" id="video-btn">
+        <div class="video-area" id="video-area"></div>
+        <!--<a class="video-shut" id="video-shut">×</a>-->
+    </div>
+    <!--<div id="shadow"></div>-->
+
+    <div id ="play_video"></div>
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <hr style="height: 5px">
+    <p>添加评论:</p>
+    <!--<div id="comment_demo" type="text" style="width:80px;height:20px;" contenteditable="true"></div>-->
+    <div  class="video_comments_create_div">
+        <textarea id="video_comment_demo" style="display: none"></textarea>
+    </div>
+    <button id="video_comment_button" onclick="create_video_commnets()" 	class="layui-btn layui-btn-normal">评论</button>
+    <div id="video_comments_infomation">
+
+    </div>
+</div>
+
+<script src="../lib/layui-v2.4.5/layui/layui.js"></script>
+<script type="text/javascript" src="../js/videoplay.js"></script>
+</body>
+</html>

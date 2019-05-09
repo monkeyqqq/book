@@ -6,9 +6,7 @@ function get_book_detail_info() {
         var bookinfo = document.getElementById("book_name");
         bookinfo.innerText = Booktra;
 
-        var book_introduction = data.book_introduction;
-        var book_intro = document.getElementById("book_introduction");
-        book_intro.innerText = book_introduction;
+
 
         var book_price =data.price;
         var book_price_info = document.getElementById("book_price");
@@ -18,10 +16,18 @@ function get_book_detail_info() {
         var book_photo = data.book_photo;
         var book_photo_1 = book_photo.split('/')[0];
         var book_photo_2 = book_photo.split('/')[1];
+        var book_photo_3 = book_photo.split('/')[2];
+
         var book_photo_1_info = document.getElementById("book_photo_1");
         book_photo_1_info.innerHTML="<img src='../bookimage/"+book_photo_1+"' width='300px' height='400px' />";
+
         var book_photo_2_info = document.getElementById("book_photo_2");
-        book_photo_2_info.innerHTML="<img src='../bookimage/"+book_photo_2+"' width='300px'  />";
+        book_photo_2_info.innerHTML="<img src='../bookimage/"+book_photo_2+"' width='300px' height='400px'  />";
+
+        var book_photo_3_info = document.getElementById("book_photo_3");
+        book_photo_3_info.innerHTML="<img src='../bookimage/"+book_photo_3+"' width='300px' height='400px'  />";
+
+
     })
 }
 
@@ -73,10 +79,10 @@ function show_book_comments(data) {
     var author_id = user_data.user_id;
     for(var i=0;i<data.length;i++){
         if(data[i].comment_author_id==author_id){
-            str_book = "<div class='book_comment_z_div'><div>"+data[i].comment_author_name+"</div><div><a href='userinfo.html'><img src='../image/"+data[i].comment_author_photo+"' style=\"width:40px; height:40px; border-radius:50%; \"/></a></div><div>"+data[i].comment_content+"</div><div>"+data[i].comment_created+"</div></div>"
+            str_book = "<div class='book_comment_z_div'><div class='book_comment_photo_div'><a href='userinfo.html'><img src='../image/"+data[i].comment_author_photo+"' style=\"width:40px; height:40px; border-radius:50%; \"/></a></div><div class='book_comment_name_div'>"+data[i].comment_author_name+"</div><div class='book_comment_content_div'>："+data[i].comment_content+"</div><div class='book_comment_time_div'>时间："+data[i].comment_created+"</div></div>"
         }
         else {
-            str_book = "<div class='book_comment_z_div'><div>"+data[i].comment_author_name+"</div><div><a href='otheruser.html?user_id="+data[i].comment_author_id+"'><img src='../image/"+data[i].comment_author_photo+"' style=\"width:40px; height:40px; border-radius:50%; \"/></a></div><div>"+data[i].comment_content+"</div><div>"+data[i].comment_created+"</div></div>"
+            str_book = "<div class='book_comment_z_div'><div class='book_comment_photo_div'><a href='otheruser.html?user_id="+data[i].comment_author_id+"'><img src='../image/"+data[i].comment_author_photo+"' style=\"width:40px; height:40px; border-radius:50%; \"/></a></div><div class='book_comment_name_div'>"+data[i].comment_author_name+"</div><div class='book_comment_content_div'>："+data[i].comment_content+"</div><div class='book_comment_time_div'>时间："+data[i].comment_created+"</div></div>"
         }
         $("#book_comments_infomation").append(str_book);
     }
@@ -99,7 +105,7 @@ function put_book_in_car() {
     else {
         for (var i = 0; i < book_length; i++) {
             if (book_id == user_book.split("/")[i]) {
-                alert("已加入购物车");
+                alert("商品已存在！");
                 break;
             }
             else if (i == book_length - 1) {
@@ -109,7 +115,7 @@ function put_book_in_car() {
                     console.log(data);
                     $.get("http://localhost:8090/getByuser_id?user_id=" + author_id, function (data) {
                         sessionStorage.obj = JSON.stringify(data);
-
+                        alert("已加入购物车！");
                     })
                 })
             }

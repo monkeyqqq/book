@@ -33,3 +33,25 @@ input[type="checkbox"] {
     border: 1px solid #01cd78;
     zoom: 150%;
 }
+
+
+.search_book_num_c{
+    position: relative;
+    left:10px;
+    top:10px;
+}
+.search_book_name_c{
+    position: relative;
+    left:30px;
+    top:30px;
+}
+.search_book_photo_c{
+    position: relative;
+    left:5px;
+    top:20px;
+}
+.search_book_price_c{
+    position: relative;
+    left:30px;
+    top:30px;
+}

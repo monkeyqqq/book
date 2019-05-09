@@ -16,16 +16,16 @@ public class VideoController {
     @Autowired
     private VideoMapper VideoMapper;
 
-    @RequestMapping("/getByAvid")
-    public VideoEntity getByAvid(@RequestParam(value = "avid", required = true) String avid){
+    @RequestMapping("/getByvid")
+    public VideoEntity getByvid(@RequestParam(value = "video_id", required = true) String video_id){
 
-        return VideoMapper.getByAvid(avid);
+        return VideoMapper.getByvid(video_id);
 
     }
 
 
-    @RequestMapping("/getByKey_word")
-    public List<VideoEntity> getByKey_word(@RequestParam(value = "key_word",required = true) String  key_word){
-        return VideoMapper.getByKey_word("%"+key_word+"%");
+    @RequestMapping("/getvideo_ByKey_word")
+    public List<VideoEntity> getvideo_ByKey_word(@RequestParam(value = "key_word",required = true) String key_word){
+        return VideoMapper.getvideo_ByKey_word("%"+key_word+"%");
     }
 }

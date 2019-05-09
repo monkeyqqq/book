@@ -29,10 +29,7 @@ public class BookController {
 
     }
 
-    @RequestMapping("/getByPrice")
-    public List<BookEntity> getByPrice(@RequestParam(value = "price",required = true) String price){
-        return BookMapper.getByPrice("%"+price+"%");
-    }
+
 
     @RequestMapping("/getByBook_name")
     public List<BookEntity> getByBook_name(@RequestParam(value = "book_name",required = true) String  book_name){

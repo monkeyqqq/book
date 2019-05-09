@@ -40,4 +40,11 @@ public class Search_commentsController {
     ){
         return  Search_commentsMapper.getBybook_Comments_article_id(book_id);
     }
+
+    @RequestMapping("/getByvideo_Comments_article_id")
+    public List<CommentsEntity> getByvideo_Comments_article_id(
+            @RequestParam(value = "video_id",required = true) int video_id
+    ){
+        return  Search_commentsMapper.getByvideo_Comments_article_id(video_id);
+    }
 }

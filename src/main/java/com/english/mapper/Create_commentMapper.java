@@ -32,4 +32,16 @@ public interface Create_commentMapper {
           @Param("comment_author_photo") String comment_author_photo
 
   );
+
+
+  @Insert("INSERT INTO comments (comment_content,video_id,comment_author_id,comment_author_name,comment_author_photo)" +
+          " VALUES(#{comment_content},#{video_id},#{comment_author_id},#{comment_author_name},#{comment_author_photo})")
+  void Create_video_comments(
+          @Param("comment_content") String comment_content,
+          @Param("video_id") String video_id,
+          @Param("comment_author_id") String comment_author_id,
+          @Param("comment_author_name") String comment_author_name,
+          @Param("comment_author_photo") String comment_author_photo
+
+  );
 }

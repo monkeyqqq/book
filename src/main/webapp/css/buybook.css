@@ -56,8 +56,10 @@
     top:10px
 }
 .zf_book_photo_div{
+    width: 100px;
+    height: 100px;
     position: relative;
     left: 170px;
-    top:10px
+    top:0px
 }
 

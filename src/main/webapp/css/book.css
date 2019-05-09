@@ -26,17 +26,20 @@
 
 }
 .search_book_div{
+    width: 300px;
     position: relative;
     left:300px;
     top:70px;
 }
 #book_button_div{
+    width: 200px;
     position: relative;
     left:370px;
     top:100px;
 }
 
 .book_gouwucar_photo_class{
+    width: 80px;
     position: relative;
     left:800px;
     top:20px;
