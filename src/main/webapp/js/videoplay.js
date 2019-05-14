@@ -40,6 +40,7 @@ function create_video_commnets() {
 
         })
     }
+    window.location.reload();
 }
 
 function get_video_commetns() {

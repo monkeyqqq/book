@@ -31,6 +31,7 @@ function clear_book() {
 
         })
     })
+    window.location.reload();
 }
 
 function jiesuan() {

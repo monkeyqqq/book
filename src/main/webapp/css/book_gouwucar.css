@@ -4,6 +4,8 @@
     border: #4E5465 1px solid;
     position: absolute;
     right: 200px;
+    background-image: url("../bookimage/book.jpg");
+    background-size:100% 100%;
 }
 
 #gouwucar_div{
@@ -20,7 +22,8 @@
 .gouwucar_book{
     width: 200px;
     height: 300px;
-    background-color: #2D93CA;
+    /*background-color: #2D93CA;*/
+    border: #4E5465 2px solid;
     box-shadow: #0C0C0C 8px 8px 5px;
 }
 .clear_button{

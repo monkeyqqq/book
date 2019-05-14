@@ -3,3 +3,10 @@
     position:absolute;
     right:500px;
 }
+.ALL_DIV_CLASS{
+    width:1366px;
+    height:580px;
+    background-image: url("../bookimage/all.jpg");
+    background-size:100% 100%;
+    background-repeat:repeat;
+}

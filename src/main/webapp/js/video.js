@@ -11,6 +11,7 @@ window.onload = function(){
     else {
        if(v_key_word_null!=null&&v_key_word_null!=''){
         this.getVideo();
+        this.get_video_number_by_keyword();
         $("#video_button_div").show(500);
 
        }
@@ -27,17 +28,27 @@ function search_video_button_action() {
     }
 }
 
+function get_video_number_by_keyword(){
+var key_word = decodeURI(location.href.split('=')[1].split('&')[0]);
+    $.get("http://localhost:8090/get_video_numby_keyword?key_word="+ key_word,function (data) {
+        video_page_number = Math.ceil(data/8);
+    })
+}
+
+
 function getVideo(){
 
     var key_word = decodeURI(location.href.split('=')[1].split('&')[0]);
+    var page_num = location.href.split('=')[2];
+    var start = (page_num-1)*8;
     $("#Search_video").val(key_word);
-    $.get("http://localhost:8090/getvideo_ByKey_word?key_word=" + key_word, function (data) {
+    $.get("http://localhost:8090/getvideo_ByKey_word?key_word=" + key_word +"&start="+start, function (data) {
         //console.log(data);
         if(data.length==0){
             $("#video_info").append("暂无搜索结果！");
         }
         else {
-        video_page_number = Math.ceil(data.length/8);
+
         console.log(video_page_number);
         show_video_data(data);
         }
@@ -51,7 +62,7 @@ function show_video_data(data) {
     var video_href = "";//定义用于拼接的字符串
     document.getElementById("video_info").innerHTML="";
     var video_page=location.href.split('=')[2];
-    for(var i=(video_page-1)*8;i<video_page*8&&data[i];i++){
+    for(var i=0;i<data.length&&data[i];i++){
 
        video_href= "<a href='videoplay.html?mvid="+data[i].video_id+"'><div class='search_video_div' style='background-image: url(../videoimage/"+data[i].video_photo+");background-size:100% 100%;'><div class='video_key_word_div'>"+data[i].key_word+"</div><div class='video_time_div'>时长："+data[i].video_time+"分钟</div></div></a>"
         $("#video_info").append(video_href);

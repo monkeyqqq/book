@@ -7,16 +7,13 @@
     <!--
     videojs
     -->
-    <link href="//vjs.zencdn.net/4.9/video-js.css" rel="stylesheet">
-    <script src="//vjs.zencdn.net/4.9/video.js"></script>
+
     <link rel="stylesheet" href="../lib/layui-v2.4.5/layui/css/layui.css">
     <link rel="stylesheet" href="../css/base.css">
     <link rel="stylesheet" href="../css/userinfo.css">
 
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
-     
+
     <title>Title</title>
 </head>
 <body onload="get_user_info();show_guanzhu_info();">
@@ -31,12 +28,33 @@
         <li class="layui-nav-item">
             <a href="video.html?page=1">视频</a>
         </li>
+        <li class="layui-nav-item">
+            <a href="psychology.html?page=1">心理咨询</a>
+        </li>
         <li class="layui-nav-item layui-this">
             <a href="userinfo.html">我的</a>
         </li>
     </ul>
 </div>
-<div class="all_div">
+<div class="link_info_div">
+    <br>
+    <br>
+    <b>相关链接：</b>
+    <br>
+    <br>
+    <a href="https://yz.chsi.com.cn/">中国研究生招生信息网</a>
+    <br>
+    <br>
+    <a href="http://yjsy.sdust.edu.cn/zhaoshenggongzuo/shuoshizhaosheng/">山东科技大学研究生招生信息网</a>
+    <br>
+    <br>
+    <a href="https://www.chsi.com.cn/">学信网</a>
+    <br><br>
+    <a href="http://www.yz.sdu.edu.cn/">山东大学研究生招生信息网</a>
+    <br><br>
+    <a href="http://yz.ouc.edu.cn/">中国海洋大学研究生招生信息网</a>
+</div>
+<div class="all_userinfo_div">
 <div id="user_detail_info">
      <div style="margin-left: 30px;margin-top: 20px">
     <div id="user_detail_photo_info"></div>
@@ -46,7 +64,8 @@
     <span>用户名：</span>
     <span id="user_detail_name_info"></span>
     <br>
-    <span>用户发表文章数：</span><span id="user_article_num"></span>
+    <span>用户发表文章数：</span><span id="user_article_num"></span><br>
+         <button class="layui-btn layui-btn-sm layui-btn-danger" onclick="shut_down()">注销</button>
      </div>
     <div class="user_infomation_btu" style="margin-top: 80px" >
     <button id="infomation_btu" class="layui-btn" onclick="get_new_infomation()">新评论<span class="layui-badge-dot layui-bg-orange"></span></button>

@@ -13,14 +13,26 @@ window.onload = function(){
     }
     else{
     this.Show_all_article();
+    this.get_all_article_count();
     }
 
 }
 
 var page_number = 0;
+function get_all_article_count() {
+    var school_name=decodeURI(location.href.split('=')[1].split('&')[0]);
+    $.get("http://localhost:8090/get_a_Byarticle_from?article_from="+school_name,function (data) {
+        console.log(data);
+        page_number=Math.ceil(data/10);
+    })
+
+}
+
+
+
 
 function get_article() {
-    $("#next_page_btu").hide();
+     $("#next_page_btu").hide();
     $("#up_page_btu").hide();
     var key_word = $('#search_article').val();
     var school_name_q = decodeURI(location.href.split('=')[1].split('&')[0]);
@@ -28,9 +40,9 @@ function get_article() {
     document.getElementById("article_info").innerHTML = "";
     //console.log(key_word);
     //console.log(school_name_q);
-   if(key_word!=null&& key_word!="") {
+    if(key_word!=null&& key_word!="") {
         $.get("http://localhost:8090/getByarticle_key_word?article_keyword=" + key_word + "&article_from=" + school_name_q, function (data) {
-           // console.log(data);
+            // console.log(data);
             //sessionStorage.obj = JSON.stringify(data);
             //         //文章题目
             //
@@ -40,7 +52,7 @@ function get_article() {
                 var article_href = " <div class='article_href_div'>  <a href=\"articecontent.html?article_id=" + article_id + "\">\n" +
                     "        <div class='article_title' id=\"article_title" + article_id + "\">"+data[i].article_title+"</div>\n" +
                     "        <div class='article_summary' id=\"article_content" + article_id + "\">"+data[i].article_summary+"</div>\n" +
-                    "    </a><div class='article_create_div'>发布于:"+data[i].article_created+"</div></div> "
+                    "    </a><div class='article_create_div'>发布于:"+data[i].article_created+"</div></div> <br><br>"
                 // var article_id_info = document.getElementById("article_info");
                 // article_id_info.innerHTML= article_href;
                 $('#article_info').append(article_href);
@@ -87,8 +99,9 @@ function show_discuss_info() {
 function Show_all_article() {
     var school_name=decodeURI(location.href.split('=')[1].split('&')[0]);
     var page_num = location.href.split('=')[2];
-
-    $.get("http://localhost:8090/get_article_Byarticle_from?article_from="+school_name,function (data) {
+    var start = (page_num -1 )*10;
+    var number = 10;
+    $.get("http://localhost:8090/get_article_Byarticle_from?article_from="+school_name+"&start="+start+"&number="+number,function (data) {
         // for (var i = 0; i < data.length; i++) {
         //     var article_id = data[i].article_id;
         //     var article_href = " <div class='article_href_div'>  <a href=\"articecontent.html?article_id=" + article_id + "\">\n" +
@@ -107,21 +120,22 @@ function Show_all_article() {
         //     var article_summary_info = document.getElementById("article_content" + article_id);
         //     article_summary_info.innerText = article_summary;
         // }
-        show_article_data(data,page_num);
-        page_number=Math.ceil(data.length/10);
+        console.log(data);
+        show_article_data(data);
+
     })
 }
 
 
-function show_article_data(data,page_num) {
+function show_article_data(data) {
 
-    for (var i = (page_num-1)*10; i < page_num*10; i++) {
+    for (var i = 0; i < data.length; i++) {
         if (i < data.length) {
             var article_id = data[i].article_id;
             var article_href = " <div class='article_href_div'>  <a href=\"articecontent.html?article_id=" + article_id + "\">\n" +
                 "        <div class='article_title' id=\"article_title" + article_id + "\">"+data[i].article_title+"</div>\n" +
                 "        <div class='article_summary' id=\"article_content" + article_id + "\">"+data[i].article_summary+"</div>\n" +
-                "    </a><div class='article_create_div'>发布于:"+data[i].article_created+"</div></div> "
+                "    </a><div class='article_create_div'>发布于:"+data[i].article_created+"</div></div> <br><br> "
 
             $('#article_info').append(article_href);
 

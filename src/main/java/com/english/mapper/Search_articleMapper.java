@@ -48,7 +48,7 @@ public interface Search_articleMapper {
     @Select("SELECT count(*) from article WHERE article_from = #{article_from}")
     int get_a_Byarticle_from(String article_from);
 
-    @Select("SELECT * from article WHERE article_from = #{article_from} ORDER BY article_created DESC ")
+    @Select("SELECT * from article WHERE article_from = #{article_from} ORDER BY article_created DESC limit #{start},#{number}")
     @Results({
             @Result(property = "article_id" ,column="article_id"),
             @Result(property = "article_title", column = "article_title"),
@@ -57,5 +57,11 @@ public interface Search_articleMapper {
             @Result(property = "author_id", column = "author_id"),
             @Result(property = "article_new_comment", column = "article_new_comment")
     })
-    List<ArticleEntity> get_article_Byarticle_from(String article_from);
+    List<ArticleEntity> get_article_Byarticle_from(
+            @Param("article_from") String article_from,
+            @Param("start") int start,
+            @Param("number") int number
+          );
+
+
 }

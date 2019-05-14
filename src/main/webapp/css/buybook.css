@@ -4,6 +4,8 @@
     border: #4E5465 1px solid;
     position: relative;
     left: 200px;
+    background-image: url("../bookimage/book.jpg");
+    background-size:100% 100%;
 }
 #book_deal{
     width: 700px;
@@ -14,7 +16,8 @@
 .book_deal_div{
     width: 500px;
     height: 150px;
-    background-color:#e2e2e2;
+    border: #4E5465 1px solid;
+    box-shadow:#0C0C0C 5px 5px 3px;
     position: relative;
     left: 100px;
 }

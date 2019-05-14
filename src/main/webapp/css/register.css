@@ -4,16 +4,19 @@
     border: #4E5465 1px solid;
     position: absolute;
     right: 200px;
+    background-image: url("../bookimage/user.jpg");
+    background-size:100% 100%;
 }
 
 
 .register_div{
     width:500px;
-    height: 600px;
+    height: 500px;
     position: relative;
     left:200px;
     top:100px;
-    background-color:#e2e2e2;
+    /*background-color:#e2e2e2;*/
+    opacity: 0.6;
 }
 .register_info_div{
     width:300px;

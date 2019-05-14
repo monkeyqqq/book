@@ -2,6 +2,7 @@ package com.english.mapper;
 
 
 import com.english.entity.VideoEntity;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
@@ -22,7 +23,11 @@ public interface VideoMapper {
     })
     VideoEntity getByvid(String video_id);
 
-    @Select("SELECT * FROM video WHERE key_word like #{key_word};")
+
+    @Select("SELECT count(*) FROM video WHERE key_word like #{key_word}")
+    int get_video_numby_keyword(String key_word);
+
+    @Select("SELECT * FROM video WHERE key_word like #{key_word} limit #{start},8;")
     @Results({
             @Result(property = "video_id", column = "video_id"),
             @Result(property = "MV_id",column = "MV_id"),
@@ -31,5 +36,8 @@ public interface VideoMapper {
             @Result(property = "video_photo",column = "video_photo"),
             @Result(property = "video_time",column = "video_time")
     })
-    List<VideoEntity> getvideo_ByKey_word(String key_word);
+    List<VideoEntity> getvideo_ByKey_word(
+            @Param("key_word") String key_word,
+            @Param("start") int start
+          );
 }

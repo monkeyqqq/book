@@ -5,10 +5,18 @@
     position: relative;
     left:200px;
     top:-20px;
+    background-image: url("../bookimage/user.jpg");
+    background-size:100% 100%;
 }
 .all_userinfo_div{
-    width:900px;
-    height: 700px;
+
+    width: 900px;
+    border: #4E5465 1px solid;
+    position: absolute;
+    right: 200px;
+    background-image: url("../bookimage/book.jpg");
+    background-size:100% 100%;
+
 }
 .user_infomation_btu{
     width: 500px;

@@ -73,6 +73,7 @@ function Create_article() {
 
     $.post("http://localhost:8090/Insert",{"article_title":article_t,"article_summary": article_s,"article_content" : article_lay_c,"author_id":id,"article_from":school_name},function (data) {
         var bookinfo = document.getElementById("article_info");
+        window.location.reload();
         bookinfo.innerText = "发布成功";
     })
 

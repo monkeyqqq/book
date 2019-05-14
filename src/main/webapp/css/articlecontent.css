@@ -1,3 +1,12 @@
+.all_article_content_div{
+    width: 900px;
+    border: #4E5465 1px solid;
+    position: absolute;
+    right: 200px;
+    background-image: url("../bookimage/discuss.jpg");
+    background-size:100% 100%;
+}
+
 #article_id{
     font-size: 25px;
 

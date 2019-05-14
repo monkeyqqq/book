@@ -62,6 +62,7 @@ function create_book_commnets() {
 
         })
     }
+    window.location.reload();
 }
 
 function get_book_commetns() {

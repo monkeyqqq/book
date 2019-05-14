@@ -16,5 +16,5 @@ public class UserEntity {
     private String user_role;
     private String user_articlecount;
     private String user_book;
-
+    private String psychology_link;
 }

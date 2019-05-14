@@ -5,6 +5,9 @@
     /*background-color:#e2e2e2;*/
     position: absolute;
     right: 200px;
+
+    background-image: url("../bookimage/discuss.jpg");
+    background-size:100% 100%;
 }
 .article_t_create_font{
     font-size: 15px;

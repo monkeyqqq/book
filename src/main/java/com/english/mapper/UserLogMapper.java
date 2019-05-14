@@ -20,7 +20,8 @@ public interface UserLogMapper {
             @Result(property = "user_created",column = "user_created"),
             @Result(property = "user_role", column = "user_role"),
             @Result(property = "user_articlecount", column = "user_articlecount"),
-            @Result(property = "user_book",column = "user_book")
+            @Result(property = "user_book",column = "user_book"),
+            @Result(property = "psychology_link",column = "psychology_link")
 
     })
     UserEntity getByuser_name(@Param("user_name") String user_name,@Param("user_password") String user_password);
@@ -37,7 +38,9 @@ public interface UserLogMapper {
             @Result(property = "user_created",column = "user_created"),
             @Result(property = "user_role", column = "user_role"),
             @Result(property = "user_articlecount", column = "user_articlecount"),
-            @Result(property = "user_book",column = "user_book")
+            @Result(property = "user_book",column = "user_book"),
+            @Result(property = "psychology_link",column = "psychology_link")
+
     })
     UserEntity checkByuser_name(@Param("user_name") String user_name);
 
@@ -52,7 +55,9 @@ public interface UserLogMapper {
             @Result(property = "user_created",column = "user_created"),
             @Result(property = "user_role", column = "user_role"),
             @Result(property = "user_articlecount", column = "user_articlecount"),
-            @Result(property = "user_book",column = "user_book")
+            @Result(property = "user_book",column = "user_book"),
+            @Result(property = "psychology_link",column = "psychology_link")
+
     })
     UserEntity getByuser_id(@Param("user_id") int user_id);
 }

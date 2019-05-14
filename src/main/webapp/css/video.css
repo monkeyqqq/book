@@ -4,6 +4,8 @@
     border: #4E5465 1px solid;
     position: absolute;
     right: 200px;
+    background-image: url("../bookimage/video.jpg");
+    background-size:100% 100%;
 }
 #video_info{
     width:800px ;

@@ -24,8 +24,16 @@ public class VideoController {
     }
 
 
+    @RequestMapping("/get_video_numby_keyword")
+    public int get_video_numby_keyword( @RequestParam(value = "key_word",required = true) String key_word){
+        return VideoMapper.get_video_numby_keyword("%"+key_word+"%");
+    }
+
     @RequestMapping("/getvideo_ByKey_word")
-    public List<VideoEntity> getvideo_ByKey_word(@RequestParam(value = "key_word",required = true) String key_word){
-        return VideoMapper.getvideo_ByKey_word("%"+key_word+"%");
+    public List<VideoEntity> getvideo_ByKey_word(
+            @RequestParam(value = "key_word",required = true) String key_word,
+            @RequestParam(value = "start",required = true) int start
+    ){
+        return VideoMapper.getvideo_ByKey_word("%"+key_word+"%",start);
     }
 }

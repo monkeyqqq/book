@@ -188,7 +188,7 @@ function hide_reply_input(id){
 
     var reply_button  = "reply_di"+id;
     $("#"+reply_button).hide(500);
-    //console.log(reply_button);
+    window.location.reload();
 
 }
 
@@ -224,6 +224,7 @@ function create_commnets() {
         })
     })
     }
+    window.location.reload();
 }
 
 //返回上一页

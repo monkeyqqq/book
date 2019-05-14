@@ -1,74 +1,31 @@
-.show_school_all_div{
+.all_psychology{
     width: 900px;
-    height:1600px;
+    height:1000px;
     border: #4E5465 1px solid;
     position: absolute;
     right: 200px;
     background-image: url("../bookimage/discuss.jpg");
     background-size:100% 100%;
 }
-.school_discuss_info_div{
-    width:900px;
-    heigh:250px;
-    /*background-color: #808679;*/
+
+
+#search_psychology_article{
     position: relative;
-    top:20px;
-}
-
-/*设置讨论区名字文字大小*/
-#school_name_info{
-    font-size: 30px;
-}
-
-#guanzhu_btn{
-    position: absolute;
-    left: 190px;
-    top:3px;
-}
-
-#school_article_count_info{
-    position: absolute;
     left: 500px;
     top:20px;
 }
-
-#school_article_count{
-    position: absolute;
-    left: 550px;
-    top:22px;
-}
-
-#school_create_time_info{
-    position: relative;
-    left: 10px;
-    top:10px;
-}
-
-#school_created_info{
-    position: relative;
-    left: 60px;
-    top:-7px;
-}
-
-
-#create_article_btu{
-    position: relative;
-    left: 50px;
-    top:28px;
-}
-
-#search_article{
-    position: relative;
-    left: 500px;
-    top:-9px;
-}
-
-#submit_article1{
+#submit_psychology_article1{
     position: relative;
     left: 705px;
-    top:-47px;
+    top:-18px;
 }
-/*文字域*/
+
+#psychology_create{
+    position: relative;
+    left: 50px;
+    top:62px;
+}
+
 .article_href_div{
     width:800px;
     height:100px;
@@ -102,13 +59,13 @@
     top:20px ;
 }
 
-#up_page_btu {
+#ps_up_page_btu {
     position: relative;
     left: 350px;
     top: 10px;
 
 }
-#next_page_btu{
+#ps_next_page_btu{
     position: relative;
     left: 350px;
     top: 10px;

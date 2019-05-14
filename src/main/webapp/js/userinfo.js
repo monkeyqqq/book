@@ -60,11 +60,16 @@ function show_guanzhu_info(){
     var guanzhu_name = user_data.user_links;
     var guanzhu_info =document.getElementById("guanzhu_info");
     guanzhu_info.innerHTML='';
-    var guanzhu_count = guanzhu_name.split('/').length;
-    for(var i=0;i<guanzhu_count-1;i++){
-        var discuss_name = guanzhu_name.split('/')[i];
-        var discuss_href="<div class='article_new_infomation_div'><p style=\"font-size: 20px;color: #3F3F3F\">你关注的讨论区：</p><a href=\"showarticle.html?school_name="+discuss_name+"&page=1\" style='font-size: 20px;color: #009688'>"+discuss_name+"</a></div>"
-        $("#guanzhu_info").append(discuss_href);
+    if(guanzhu_name!=null&&guanzhu_name!='') {
+        var guanzhu_count = guanzhu_name.split('/').length;
+        for (var i = 0; i < guanzhu_count - 1; i++) {
+            var discuss_name = guanzhu_name.split('/')[i];
+            var discuss_href = "<div class='article_new_infomation_div'><p style=\"font-size: 20px;color: #3F3F3F\">你关注的讨论区：</p><a href=\"showarticle.html?school_name=" + discuss_name + "&page=1\" style='font-size: 20px;color: #009688'>" + discuss_name + "</a></div>"
+            $("#guanzhu_info").append(discuss_href);
+        }
+    }
+    else{
+        $("#guanzhu_info").append("暂无关注！")
     }
     // var button_href="<button id='hide_updata' onclick='hide_guanzhu_info()' class='layui-btn layui-btn-mini'>收起</button>"
     // $("#guanzhu_info").append(button_href);
@@ -159,6 +164,7 @@ function update_user_info() {
    // })
    // }
    $('#update_info').hide(500);
+    window.location.reload();
 }
 
 function hide_updata_info() {
@@ -231,4 +237,10 @@ function update_comment_read(comment_id) {
     $.get("http://localhost:8090/Update_comment_byId?comment_read="+read_info+"&comment_id="+comment_id,function (data) {
         //console.log(data);
     })
+}
+
+function shut_down() {
+    sessionStorage.clear();
+    window.location.href = "login.html"
+
 }

@@ -9,3 +9,14 @@
     height: 36px;
 
 }
+
+
+.link_info_div{
+    width: 240px;
+    height: 500px;
+    background-image: url("../bookimage/user.jpg");
+    background-size:100% 100%;
+    position: fixed;
+    left: 2px;
+    top: 100px;
+}
