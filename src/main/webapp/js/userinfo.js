@@ -26,7 +26,16 @@ function get_user_info() {
         user_article.innerText=user_article_l;
     })
 }
-
+function show_count_btu(){
+    var str = sessionStorage.obj;
+    var user_data = $.parseJSON(str);
+    if(user_data.user_role == 'admin'){
+        $("#admin_count_info").show(500);
+    }
+    else {
+        $("#user_count_info").show(500);
+    }
+}
 
 function Show_old_user_info() {
     var str = sessionStorage.obj;
@@ -243,4 +252,90 @@ function shut_down() {
     sessionStorage.clear();
     window.location.href = "login.html"
 
+}
+
+
+function count_information_show(id) {
+    var str = sessionStorage.obj;
+    var user_data = $.parseJSON(str);
+    var action =id.split('/')[1];
+    $("#count_v_information").show(500);
+    $('#reply_area').hide(500);
+    $('#update_info').hide(500);
+    $("#guanzhu_info").hide(500);
+    $('#infomation_area').hide(500);
+    $.get("http://localhost:8090/get_count_info_by_action?user_id="+user_data.user_id+"&action="+action,function (data) {
+        console.log(data);
+        huatu(data,action);
+  })
+}
+function admin_count_information_show(id) {
+
+    var action =id.split('/')[1];
+    $("#count_v_information").show(500);
+    $('#reply_area').hide(500);
+    $('#update_info').hide(500);
+    $("#guanzhu_info").hide(500);
+    $('#infomation_area').hide(500);
+    $.get("http://localhost:8090/admin_get_count_info_by_action?action="+action,function (data) {
+        console.log(data);
+        huatu(data,action);
+    })
+}
+
+
+function huatu(data,action) {
+        var a = new Array(12);
+        var info_count_1='';
+        if(action == 'l'){
+             info_count_1= '用户登录次数';
+        }
+        if(action == 'b'){
+            info_count_1 = '浏览书籍数';
+         }
+         if(action == 'v'){
+            info_count_1 = '观看视频数';
+        }
+        if(action == 'a'){
+            info_count_1 = '浏览文章数';
+        }
+        for(var i=0;i<data.length;i++){
+            if(data[i].months== '01'){a[0]=data[i].count;continue;}
+            if(data[i].months== '02'){a[1]=data[i].count;continue;}
+            if(data[i].months== '03'){a[2]=data[i].count;continue;}
+            if(data[i].months== '04'){a[3]=data[i].count;continue;}
+            if(data[i].months== '05'){a[4]=data[i].count;continue;}
+            if(data[i].months== '06'){a[5]=data[i].count;continue;}
+            if(data[i].months== '07'){a[6]=data[i].count;continue;}
+            if(data[i].months== '08'){a[7]=data[i].count;continue;}
+            if(data[i].months== '09'){a[8]=data[i].count;continue;}
+            if(data[i].months== '10'){a[9]=data[i].count;continue;}
+            if(data[i].months== '11'){a[10]=data[i].count;continue;}
+            if(data[i].months== '12'){a[11]=data[i].count;continue;}
+
+        }
+        var myChart = echarts.init(document.getElementById('count_v_information'));
+        console.log("1111111");
+        // 指定图表的配置项和数据
+        var option = {
+            title: {
+                text: 'ECharts 入门示例'
+            },
+            tooltip: {},
+            legend: {
+                data:[info_count_1]
+            },
+            xAxis: {
+                data: ["1月","2月","3月","4月","5月","6月","7月","8月","9月","10月","11月","12月"]
+            },
+            yAxis: {},
+            series: [{
+                name: info_count_1,
+                type: 'bar',
+                data: a
+            }]
+        };
+
+        myChart.setOption(option);
+        console.log("2222222");
 }

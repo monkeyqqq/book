@@ -13,11 +13,13 @@ layui.use('layedit', function(){
 });
 
 function play_video() {
-    //$("#video-btn").show();
-    //ovideo.style.display='block';
-    // oshadow.style.display='block';
     var video_id = location.href.split('=')[1];
-    $.get("http://localhost:8090/getByvid?video_id="+video_id,function (data) {
+    var str = sessionStorage.obj;
+    var user_data = $.parseJSON(str);
+    var action = "v/"+video_id;
+    $.get("http://localhost:8090/insert_log?user_id="+user_data.user_id+"&action="+action,function (data) {
+    })
+        $.get("http://localhost:8090/getByvid?video_id="+video_id,function (data) {
         var oatn=document.getElementById('video-area');
         oatn.innerHTML=data.mv_iframe;
     })

@@ -11,6 +11,7 @@
 .all_userinfo_div{
 
     width: 900px;
+    height: 1200px;
     border: #4E5465 1px solid;
     position: absolute;
     right: 200px;
@@ -38,4 +39,19 @@
     position: relative;
     left:20px;
     top:20px;
+}
+#count_v_information{
+    width: 500px;
+    height:300px;
+    border: #0C0C0C 3px solid;
+}
+.count_information_div{
+    position: relative;
+    left:200px;
+    top:20px;
+}
+#user_count_info{
+    position: relative;
+    left:50px;
+
 }

@@ -9,13 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public interface ArticleMapper {
 
   @Insert("INSERT INTO article (article_title,article_summary,article_content,author_id,article_from) VALUES(#{article_title},#{article_summary},#{article_content},#{author_id},#{article_from})")
-//    @Results({
-//            @Result(property = "article_title", column = "article_title"),
-//            @Result(property = "article_summary",column = "article_summary"),
-//            @Result(property = "article_content", column = "article_content"),
-//            @Result(property = "author_id", column = "author_id")
-//    })
-    void Insert(@Param("article_title") String article_title,
+   void Insert(@Param("article_title") String article_title,
                 @Param("article_summary") String article_summary,
 
                 @Param("article_content") String article_content,

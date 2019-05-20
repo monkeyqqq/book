@@ -1,12 +1,39 @@
 /*用户头像*/
 #user_photo_info{
-    position:absolute;
-    right:500px;
+    position:relative;
+    left:300px;
+    top: 200px;
+}
+#user_name_info{
+    position:relative;
+    left:380px;
+    top: 150px;
+    font-family: layui-icon;
+    font-size: 28px;
+    font-style: oblique;
+    color:#2D93CA;
 }
 .ALL_DIV_CLASS{
     width:1366px;
-    height:580px;
+    height:595px;
     background-image: url("../bookimage/all.jpg");
     background-size:100% 100%;
     background-repeat:repeat;
+}
+
+.welcome_font{
+    position:relative;
+    left:150px;
+    top: 80px;
+    font-family: layui-icon;
+    font-size: 50px;
+    font-style: oblique;
+}
+.welcome_font_2{
+    position:relative;
+    left:490px;
+    top: 113px;
+    font-family: layui-icon;
+    font-size: 30px;
+    font-style: oblique;
 }

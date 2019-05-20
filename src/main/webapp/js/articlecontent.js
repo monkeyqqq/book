@@ -6,7 +6,11 @@ function get_article_comments() {
     var article_id=href_info.split("=")[1];
     var str = sessionStorage.obj;
     var user_data = $.parseJSON(str);
-    $.get("http://localhost:8090/getByarticle_id?article_id=" +article_id, function (data) {
+
+    var action = "a/"+article_id;
+    $.get("http://localhost:8090/insert_log?user_id="+user_data.user_id+"&action="+action,function (data) {
+    })
+        $.get("http://localhost:8090/getByarticle_id?article_id=" +article_id, function (data) {
 
         //
         // var article_id = data.article_id;

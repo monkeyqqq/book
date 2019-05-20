@@ -1,5 +1,10 @@
 function get_book_detail_info() {
     var book_id = location.href.split('=')[1];
+    var str = sessionStorage.obj;
+    var user_data = $.parseJSON(str);
+    var action = "b/"+book_id;
+    $.get("http://localhost:8090/insert_log?user_id="+user_data.user_id+"&action="+action,function (data) {
+    })
     $.get("http://localhost:8090/getByNum?num=" + book_id, function (data) {
         console.log(data);
         var Booktra = data.book_name;

@@ -226,7 +226,7 @@ function guanzhu_up(){
 
         })
     })
-
+    window.location.reload();
 }
 
 layui.use('element', function(){

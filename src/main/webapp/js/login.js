@@ -1,5 +1,5 @@
 
-//用户登录
+
 function User_login(){
     var user_name = $('#user_name').val();
     var user_password = $('#use_password').val();
@@ -16,8 +16,12 @@ function User_login(){
 
             sessionStorage.obj = JSON.stringify(data);
 
-            window.location.href = 'http://localhost:8090/view/index.html';
 
+            var action = "l/"+data.user_id;
+            $.get("http://localhost:8090/insert_log?user_id="+data.user_id+"&action="+action,function (data) {
+
+            })
+            window.location.href = 'http://localhost:8090/view/index.html';
         }
 
 
@@ -28,8 +32,8 @@ function User_login(){
 
 
 // $("#user_name").bind('input propertychange',function(){
-//     login_check_user_name();
-// });
+// //     login_check_user_name();
+// // });
 
 $("#user_name").blur(function () {
     login_check_user_name();

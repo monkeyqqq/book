@@ -22,7 +22,7 @@ public class ArticleController {
             @RequestParam(value = "author_id", required = true) String author_id,
             @RequestParam(value = "article_from",required = true)String article_from
     ){
-        System.out.println(article_content.length());
+        //System.out.println(article_content.length());
         ArticleMapper.Insert(article_title,article_summary,article_content,author_id,article_from);
     }
 

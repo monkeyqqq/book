@@ -11,12 +11,12 @@
     <link rel="stylesheet" href="../lib/layui-v2.4.5/layui/css/layui.css">
     <link rel="stylesheet" href="../css/base.css">
     <link rel="stylesheet" href="../css/userinfo.css">
-
+    <script src="../js/Echarts/echarts.min.js"></script>
     <meta charset="UTF-8">
 
     <title>Title</title>
 </head>
-<body onload="get_user_info();show_guanzhu_info();">
+<body onload="get_user_info();show_guanzhu_info();show_count_btu();">
 <div>
     <ul class="layui-nav" lay-filter="">
         <li class="layui-nav-item">
@@ -77,8 +77,10 @@
     <button id="guanzhu_show" onclick="show_guanzhu_btu()" class="layui-btn">显示已关注</button>
 
     <button id="update_user_info" onclick="Show_old_user_info()" class="layui-btn">更新用户信息</button>
+
     </div>
     <div id="show_user_infomation_div" style="margin-top: 0px">
+
         <div id="infomation_area" style="display: none"></div>
         <div id="reply_area" style="display: none"></div>
         <div id="guanzhu_info" style="display: none"></div>
@@ -97,11 +99,30 @@
             <br>
             <div class="update_button"><button id="updata_buttom" onclick="update_user_info()" class="layui-btn layui-btn-warm">更新</button><button id="concle_updata" onclick="hide_updata_info()" class="layui-btn layui-btn-primary">取消</button></div>
         </div>
-    </div>
 
+    </div>
+    <div class="count_information_div">
+    <div id ="user_count_info" style="display: none">
+        <button id="count_information/l" onclick="count_information_show(this.id)" class="layui-btn">个人登录</button>
+        <button id="count_information/a" onclick="count_information_show(this.id)" class="layui-btn">个人文章</button>
+        <button id="count_information/b" onclick="count_information_show(this.id)" class="layui-btn">个人书籍</button>
+        <button id="count_information/v" onclick="count_information_show(this.id)" class="layui-btn">个人视频</button>
+    </div>
+        <div id ="admin_count_info" style="display: none">
+            <button id="admin_count_information/l" onclick="admin_count_information_show(this.id)" class="layui-btn">统计登录</button>
+            <button id="admin_count_information/a" onclick="admin_count_information_show(this.id)" class="layui-btn">统计文章</button>
+            <button id="admin_count_information/b" onclick="admin_count_information_show(this.id)" class="layui-btn">统计书籍</button>
+            <button id="admin_count_information/v" onclick="admin_count_information_show(this.id)" class="layui-btn">统计视频</button>
+        </div>
+    <div id="count_v_information" ></div>
+    </div>
 </div>
 </div>
+
+
+
 <script src="../lib/layui-v2.4.5/layui/layui.js"></script>
 <script type="text/javascript" src="../js/userinfo.js"></script>
+
 </body>
 </html>
