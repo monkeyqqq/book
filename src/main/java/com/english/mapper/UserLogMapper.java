@@ -44,6 +44,24 @@ public interface UserLogMapper {
     })
     UserEntity checkByuser_name(@Param("user_name") String user_name);
 
+
+    @Select("SELECT * from user WHERE user_email = #{user_email}")
+    @Results({
+            @Result(property = "user_id", column = "user_id"),
+            @Result(property = "user_email",column = "user_email"),
+            @Result(property = "user_name", column = "user_name"),
+            @Result(property = "user_links", column = "user_links"),
+            @Result(property = "user_password", column = "user_password"),
+            @Result(property = "user_photo", column = "user_photo"),
+            @Result(property = "user_created",column = "user_created"),
+            @Result(property = "user_role", column = "user_role"),
+            @Result(property = "user_articlecount", column = "user_articlecount"),
+            @Result(property = "user_book",column = "user_book"),
+            @Result(property = "psychology_link",column = "psychology_link")
+
+    })
+    UserEntity checkByuser_phone(@Param("user_email") String user_email);
+
     @Select("SELECT * from user WHERE user_id = #{user_id}")
     @Results({
             @Result(property = "user_id", column = "user_id"),

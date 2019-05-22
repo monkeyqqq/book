@@ -313,3 +313,107 @@ function Upload_file(){
 
 
 }
+
+
+function getvercodenuber(){
+    var mobile = $("input[name='mobile']").val();//手机号
+    var verifyCode = $("input[name='verify_code']");//手机验证码
+    var vcode = verifyCode.val();//验证码
+    var me = $(this);
+    if(mobile.length != 11){
+        $("input[name='mobile']").parentsUntil('.form-wrap','.field-wrap').find('.error').html('手机号码错误').show();
+        return;
+
+    }
+
+    if($('[name="getMvcode"]').hasClass("doing")){
+        return;
+    }
+    $('[name="getMvcode"]').addClass("doing").val('正在发送');
+    $.get("http://localhost:8090/sendSms?mobile="+mobile,function (data) {
+        console.log(data);
+        if(data == 'success'){
+            countdownHandler();
+        }else{
+                        $("input[name='sms_vcode']").val('').parentsUntil('.form-wrap','.field-wrap').find('.error').html("请输入可使用的号码").show();
+                        var img_url = $('#verify_code_img').attr('src');
+                        $('#verify_code_img').attr('src',img_url+'1');
+                        $('[name="getMvcode"]').removeClass("doing");
+                        $('#sendSms').val("点击获取");
+                    }
+    });
+
+}
+
+
+
+function  countdownHandler(){
+    var button = $("#sendSms");
+    var number = 60;
+    var timeTask=setInterval(function(){
+
+        if(number==0){
+        console.log('来清计时器了,当前还剩${number}秒');
+        button.removeAttr("disabled");
+        button.val("发送验证码");
+        clearInterval(timeTask);
+
+    }else{
+        if(number>0){
+            button.attr("disabled",true);
+            button.val(number + "秒 重新发送");
+            number--;
+        }
+
+    }
+},1000);
+
+}
+
+
+function verifycode_check() {
+    var mobile = $("input[name='mobile']").val();
+    var smsCode = $("input[name='sms_vcode']").val();
+
+    if (mobile.length != 11) {
+        $("input[name='mobile']").parentsUntil('.form-wrap', '.field-wrap').find('.error').html('手机号码输入错误').show();
+        return;
+    }
+
+    if (smsCode.length < 4) {
+        $("input[name='sms_vcode']").parentsUntil('.form-wrap', '.field-wrap').find('.error').html('手机验证码错误').show();
+        return;
+    }
+    $.ajax({
+        url: "/register",
+        async : true,
+        type: "post",
+        dataType: "text",
+        data:{
+            sms_vcode:smsCode
+
+        },
+        success: function (data) {
+            if(data == 'success'){
+                alert("注册成功");
+                return ;
+            }
+            alert(data);
+        }
+    });
+
+}
+
+
+function aaaaaaaaaaa() {
+   _dx.Captcha(document.getElementById('img_verify11111'), {
+        appId: '2a0873f05d7cb1bcab65703ffd581c78', //appId,开通服务后可在控制台中“服务管理”模块获取
+        style: 'inline',
+        success: function (token) {
+            console.log('token:', token);
+            $.get("http://localhost:8090/imageverify?token="+token,function(data){
+                console.log(data);
+            })
+        }
+    })
+}

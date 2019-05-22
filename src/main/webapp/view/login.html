@@ -12,19 +12,51 @@
 
     <title>登录页面</title>
 </head>
-<body>
+<body onload="aaaaaaaaaaa();aaaaaaaaaa();">
 <div class="login_all_div">
     <div id="user_login">
-        <div class="login_name_div">
-       <p>用户名：</p> <input id="user_name" type="text" name="title" required lay-verify="required" placeholder="请输入用户名" autocomplete="off" class="layui-input" style="width: 200px"/>
+
+        <div class="layui-tab">
+            <ul class="layui-tab-title">
+                <li class="layui-this">网站设置</li>
+                <li>用户管理</li>
+                <a href="register.html"><li>注册</li></a>
+            </ul>
+            <div class="layui-tab-content">
+                <div class="layui-tab-item layui-show">
+                    <div class="login_name_div">
+                        <b>用户名：</b> <input id="user_name" type="text" name="title" required lay-verify="required" placeholder="请输入用户名" autocomplete="off" class="layui-input" style="width: 200px"/>
+                    </div>
+                    <div class="login_password_div">
+                        <b>密码：</b> <input id="use_password" type="password" name="title" required lay-verify="required" placeholder="请输入密码" autocomplete="off" class="layui-input" style="width: 200px" />
+                    </div>
+
+                    <div id="img_verify11111"></div>
+                    <div class="login_button_div">
+                        <button id="subit_login" onclick="User_login()" class="layui-btn layui-btn-radius">登陆</button>
+
+                    </div>
+
+                </div>
+                <div class="layui-tab-item">
+                    <div class="login_name_div">
+                        <b>手机号：</b> <input id="user_phone" type="text" name="mobile" required lay-verify="required" placeholder="请输入手机号" autocomplete="off" class="layui-input" style="width: 230px"/>
+                    </div>
+                    <div class="login_password_div">
+                        <b>验证码：</b> <input  type="text" name="sms_vcode" length="6" data-format="number" maxlength="6" class="layui-input" style="width: 100px"/>
+                        <input id="sendSms" type="button" name="getMvcode" onclick="getvercodenuber()" class="layui-input" style="width: 110px" value="点击获取" />
+                    </div>
+
+                    <div id="img_verify1111"></div>
+                    <div class="login_button_div2">
+                        <button id="subit_login2" onclick="verifycode_check()" class="layui-btn layui-btn-radius">登陆</button>
+
+                    </div>
+                </div>
+
+            </div>
         </div>
-        <div class="login_password_div">
-       <p>密码：</p> <input id="use_password" type="password" name="title" required lay-verify="required" placeholder="请输入密码" autocomplete="off" class="layui-input" style="width: 200px" />
-        </div>
-        <div class="login_button_div">
-        <button id="subit_login" onclick="User_login()" class="layui-btn layui-btn-radius">登陆</button>
-        <a href="register.html"><button class="layui-btn layui-btn-radius">注册</button></a>
-        </div>
+
     </div>
 
 <div id="show_login_info" style="display: none">
@@ -35,6 +67,9 @@
 </div>
 
 </div>
+<script src="https://cdn.dingxiang-inc.com/ctu-group/captcha-ui/index.js">
+
+</script>
     <script src="../lib/layui-v2.4.5/layui/layui.js"></script>
     <script type="text/javascript" src="../js/login.js"></script>
 </body>

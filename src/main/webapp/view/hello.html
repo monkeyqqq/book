@@ -4,11 +4,8 @@
     <meta charset="UTF-8">
     <title>request demo</title>
     <script type="text/javascript" src="../lib/jquery/jquery-3.0.0.min.js"></script>
-    <!--
-    videojs
-    -->
-    <link href="//vjs.zencdn.net/4.9/video-js.css" rel="stylesheet">
-    <script src="//vjs.zencdn.net/4.9/video.js"></script>
+
+
 
     <link rel="stylesheet" href="../lib/layui-v2.4.5/layui/css/layui.css">
     <meta charset="UTF-8">
@@ -19,7 +16,7 @@
 
 
 </head>
-<body>
+<body onload="aaaaaaaaaaa()">
     <div id="word">
         <input id="english" type="text">
         <div id="chinese"></div>
@@ -119,6 +116,161 @@
     <script src="../lib/layui-v2.4.5/layui/layui.js"></script>
     <script type="text/javascript" src="../js/hello.js"></script>
 
+    <form id="FormContact" method="post" action="verify_code">
+        <!-- 联系方式 -->
+        <div class="form-wrap contact-info" id="FormWrapContact">
+            <div class="field-wrap" data-field="mobile" style="position:relative;z-index:100;">
+                <label class="short">手机号：</label>
+                <span class="field">
+                     					    <span class="ui-text">
+                                                            <input name="mobile" value="" type="mobile" placeholder="请输入您的手机号码" data-format="number" />
+                     					    </span>
+                     					    <span class="error"></span>
+                     					</span>
+            </div>
+            <!--<div class="field-wrap" data-field="mobile" style="position:relative;z-index:100;">-->
+                <!--<label class="short">验证码：</label>-->
+                <!--<span class="field">-->
+                                                                 <!--<input class="ui-text short" type="text" name="verify_code" maxlength="4" >-->
+                                                                 <!--<span class="error" style="display: inline;"></span>-->
+                                                             <!--</span>-->
+                <!--<span class="field vcode" data-type="vcode">-->
+                                                                 <!--<img  width="120" id="verify_code_img" height="32" src="/getImg" onclick="javascript:changeImg()">-->
+                                                                 <!--<a href="#" class="doc-color-link desc" onclick="javascript:changeImg()" >看不清，换一个？</a>-->
+                                                             <!--</span>-->
+            <!--</div>-->
 
+            <div class="field-wrap" data-field="mobile" style="position:relative;z-index:100;">
+                <label class="short">短信验证码：</label>
+                <span class="field">
+                                                                 <span class="get-mvcode">
+                                                                     <input class="ui-text short" type="text" name="sms_vcode" length="6" data-format="number" maxlength="6" />
+                                                                     <input id="sendSms" class="ui-btn gray" type="button" name="getMvcode" onclick="getvercodenuber()" value="点击获取" />
+                                                                 </span>
+                                                                                                                                 <div class="error"></div>
+                                                                                                                                 <span class="info" style="display:none;">
+                                                                 请将收到短信中的6位数字填入框内
+                                                                 </span>
+                     					</span>
+            </div>
+            <div class="field-wrap" style="z-index:8;">
+                <label class="short"></label>
+                <span class="field">
+                     						<input class="ui-btn green long" name="contactPost" type="button" onclick="verifycode_check()" value="登录" />
+                     					</span>
+
+            </div>
+
+        </div>
+    </form>
+    <!--&lt;!&ndash; 触发JS刷新  切换图片&ndash;&gt;-->
+    <!--<script type="text/javascript">-->
+        <!--function changeImg(){-->
+            <!--var img = document.getElementById("verify_code_img");-->
+            <!--img.src = "/getImg?date=" + new Date();-->
+        <!--}-->
+
+    <!--</script>-->
+
+
+    <!--&lt;!&ndash; 发送短信验证码&ndash;&gt;-->
+
+    <!--<script type="text/javascript">-->
+        <!--$('#sendSms').bind('click',function(){-->
+            <!--var mobile = $("input[name='mobile']").val();//手机号-->
+            <!--var verifyCode = $("input[name='verify_code']");//手机验证码-->
+            <!--var vcode = verifyCode.val();//验证码-->
+            <!--var me = $(this);-->
+            <!--if(mobile.length != 11){-->
+                <!--$("input[name='mobile']").parentsUntil('.form-wrap','.field-wrap').find('.error').html('手机号码错误').show();-->
+                <!--return;-->
+
+            <!--}-->
+            <!--// if(vcode.length < 4){-->
+            <!--//     $(verifyCode).parentsUntil('.form-wrap','.field-wrap').find('.error').html('验证码错误').show();-->
+            <!--//     return;-->
+            <!--// }-->
+            <!--if($('[name="getMvcode"]').hasClass("doing")){-->
+                <!--return;-->
+            <!--}-->
+            <!--$('[name="getMvcode"]').addClass("doing").val('正在发送');-->
+            <!--$.ajax({-->
+                <!--url : '/sendSms',-->
+                <!--data:  {-->
+                    <!--mobile:mobile,-->
+                    <!--verify_code:vcode-->
+                <!--},-->
+                <!--type: 'POST',-->
+                <!--dataType: 'json',-->
+                <!--success:function(data){-->
+                    <!--if(data.code == 0){-->
+                        <!--countdownHandler();-->
+                    <!--}else{-->
+                        <!--$("input[name='sms_vcode']").val('').parentsUntil('.form-wrap','.field-wrap').find('.error').html(data.message).show();-->
+                        <!--var img_url = $('#verify_code_img').attr('src');-->
+                        <!--$('#verify_code_img').attr('src',img_url+'1');-->
+                        <!--$('[name="getMvcode"]').removeClass("doing");-->
+                        <!--$('#sendSms').val("点击获取");-->
+                    <!--}-->
+                <!--}-->
+            <!--});-->
+
+            <!--//短信验证码倒计时-->
+            <!--function  countdownHandler(){-->
+                <!--var $button = $("#sendSms");-->
+                <!--var number = 60;-->
+                <!--var countdown = function(){-->
+                    <!--if (number == 0) {-->
+                        <!--$button.attr("disabled",false);-->
+                        <!--$button.html("发送验证码");-->
+                        <!--number = 60;-->
+                        <!--return;-->
+                    <!--} else {-->
+                        <!--$button.attr("disabled",true);-->
+                        <!--$button.html(number + "秒 重新发送");-->
+                        <!--number&#45;&#45;;-->
+                    <!--}-->
+                    <!--setTimeout(countdown,1000);-->
+                <!--}-->
+                <!--setTimeout(countdown,1000);-->
+            <!--}-->
+        <!--});-->
+        <!--&lt;!&ndash; 提交 &ndash;&gt;-->
+        <!--$('input[name="contactPost"]').click('click',function() {-->
+            <!--var mobile = $("input[name='mobile']").val();-->
+            <!--var smsCode = $("input[name='sms_vcode']").val();-->
+
+            <!--if (mobile.length != 11) {-->
+                <!--$("input[name='mobile']").parentsUntil('.form-wrap', '.field-wrap').find('.error').html('手机号码输入错误').show();-->
+                <!--return;-->
+            <!--}-->
+
+            <!--if (smsCode.length < 4) {-->
+                <!--$("input[name='sms_vcode']").parentsUntil('.form-wrap', '.field-wrap').find('.error').html('手机验证码错误').show();-->
+                <!--return;-->
+            <!--}-->
+            <!--$.ajax({-->
+                <!--url: "/register",-->
+                <!--async : true,-->
+                <!--type: "post",-->
+                <!--dataType: "text",-->
+                <!--data: data,-->
+                <!--success: function (data) {-->
+                    <!--if(data == 'success'){-->
+                        <!--alert("注册成功");-->
+                        <!--return ;-->
+                    <!--}-->
+                    <!--alert(data);-->
+                <!--}-->
+            <!--});-->
+
+        <!--});-->
+
+    <!--</script>-->
+
+    <script src="https://cdn.dingxiang-inc.com/ctu-group/captcha-ui/index.js">
+
+    </script>
+<div id="img_verify11111"></div>
 </body>
 </html>

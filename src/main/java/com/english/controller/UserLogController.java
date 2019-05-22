@@ -31,6 +31,12 @@ public class UserLogController {
         return UserLogMapper.checkByuser_name(user_name);
     }
 
+
+    @RequestMapping("/checkByuser_phone")
+    public UserEntity checkByuser_phone( @RequestParam(value="user_email",required = true) String user_email){
+        return UserLogMapper.checkByuser_phone(user_email);
+    }
+
     @RequestMapping("/getByuser_id")
     public UserEntity getByuser_id( @RequestParam(value="user_id",required = true) int user_id){
         return UserLogMapper.getByuser_id(user_id);
