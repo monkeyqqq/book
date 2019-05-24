@@ -22,4 +22,7 @@ public interface ArticleMapper {
             @Param("article_new_comment") String article_new_comment,
             @Param("article_id") String article_id
     );
+
+    @Delete("DELETE from article where article_id=#{article_id}")
+    void delete_article(@Param("article_id") String article_id);
 }

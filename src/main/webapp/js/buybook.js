@@ -25,6 +25,7 @@ function pay_for() {
     var adress = $("#adress_input").val();
     var name = $("#book_buyer_name").val();
     var phone_number = $("#book_buyer_number").val();
+    var deal_action='';
     if(adress!=null&&adress!=''&&name!=null&&name!=''&&phone_number!=null&&phone_number!=''){
     for(var i=0;i<list.length && list[i];i++)
     {
@@ -36,12 +37,25 @@ function pay_for() {
         var book_num = Number(Book_num);
         var book_price =Number($("#price_"+book_num).text());
        // var book_price = $("#"+book_num);
-
+        deal_action= deal_action +book_num+"*"+number+"/";
         total_price+=number*book_price;
 
     }
 
-    alert("总计共"+total_price+"元");
+     alert("购买成功！总计共"+total_price+"元");
+     var book_id=location.href.split('=')[1];
+
+     var str = sessionStorage.obj;
+     var user_data = $.parseJSON(str);
+
+        var action= "g/"+deal_action;
+        $.get("http://localhost:8090/insert_log?user_id="+user_data.user_id+"&action="+action,function (data) {
+        })
+        $.get("http://localhost:8090/Insert_book_deal?user_id="+user_data.user_id+"&deal_info="+deal_action+"&customer_phone="+phone_number+"&customer_name="+name+"&customer_adress="+adress,function (data) {
+
+        })
+
+
     }
     else if(name==null||name==''){
         alert("收货人姓名不能为空！");

@@ -42,4 +42,20 @@ public class LogController {
         System.out.println(LogMapper.admin_get_count_info_by_action("%"+action+"%").toString());
         return LogMapper.admin_get_count_info_by_action("%"+action+"%");
     }
+
+
+    @RequestMapping("/get_user_book_deal")
+    public List<LogEntity> get_user_book_deal(
+            @RequestParam(value = "user_id", required = true) int user_id,
+            @RequestParam(value = "action", required = true) String action
+    ){
+        return LogMapper.get_user_book_deal(user_id,"%"+action+"%");
+    }
+
+    @RequestMapping("/delete_book_deal_info")
+    public void delete_book_deal_info(
+    @RequestParam(value = "id",required = true) int id
+            ){
+    LogMapper.delete_book_deal_info(id);
+    }
 }

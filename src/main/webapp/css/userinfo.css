@@ -11,7 +11,7 @@
 .all_userinfo_div{
 
     width: 900px;
-    height: 1200px;
+
     border: #4E5465 1px solid;
     position: absolute;
     right: 200px;
@@ -53,5 +53,18 @@
 #user_count_info{
     position: relative;
     left:50px;
+
+}
+
+#all_user_info_area{
+    width: 900px;
+
+
+}
+
+.book_deal_a{
+    width: 600px;
+
+    border: #0C0C0C 1px solid;
 
 }

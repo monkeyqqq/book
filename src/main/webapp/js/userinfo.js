@@ -283,39 +283,52 @@ function admin_count_information_show(id) {
     })
 }
 
+//选项卡
+layui.use('element', function(){
+    var element = layui.element;
+
+    element.on('tab(filter)', function(data){
+        console.log(this); //当前Tab标题所在的原始DOM元素
+        console.log(data.index); //得到当前Tab的所在下标
+        console.log(data.elem); //得到当前的Tab大容器
+    });
+
+});
+
+
 
 function huatu(data,action) {
         var a = new Array(12);
         var info_count_1='';
-        if(action == 'l'){
+        if(action === 'l'){
              info_count_1= '用户登录次数';
         }
-        if(action == 'b'){
+        if(action === 'b'){
             info_count_1 = '浏览书籍数';
          }
-         if(action == 'v'){
+         if(action === 'v'){
             info_count_1 = '观看视频数';
         }
-        if(action == 'a'){
+        if(action === 'a'){
             info_count_1 = '浏览文章数';
         }
         for(var i=0;i<data.length;i++){
-            if(data[i].months== '01'){a[0]=data[i].count;continue;}
-            if(data[i].months== '02'){a[1]=data[i].count;continue;}
-            if(data[i].months== '03'){a[2]=data[i].count;continue;}
-            if(data[i].months== '04'){a[3]=data[i].count;continue;}
-            if(data[i].months== '05'){a[4]=data[i].count;continue;}
-            if(data[i].months== '06'){a[5]=data[i].count;continue;}
-            if(data[i].months== '07'){a[6]=data[i].count;continue;}
-            if(data[i].months== '08'){a[7]=data[i].count;continue;}
-            if(data[i].months== '09'){a[8]=data[i].count;continue;}
-            if(data[i].months== '10'){a[9]=data[i].count;continue;}
-            if(data[i].months== '11'){a[10]=data[i].count;continue;}
-            if(data[i].months== '12'){a[11]=data[i].count;continue;}
+            if(data[i].months=== '01'){a[0]=data[i].count;continue;}
+            if(data[i].months=== '02'){a[1]=data[i].count;continue;}
+            if(data[i].months=== '03'){a[2]=data[i].count;continue;}
+            if(data[i].months=== '04'){a[3]=data[i].count;continue;}
+            if(data[i].months=== '05'){a[4]=data[i].count;continue;}
+            if(data[i].months=== '06'){a[5]=data[i].count;continue;}
+            if(data[i].months=== '07'){a[6]=data[i].count;continue;}
+            if(data[i].months=== '08'){a[7]=data[i].count;continue;}
+            if(data[i].months=== '09'){a[8]=data[i].count;continue;}
+            if(data[i].months=== '10'){a[9]=data[i].count;continue;}
+            if(data[i].months=== '11'){a[10]=data[i].count;continue;}
+            if(data[i].months=== '12'){a[11]=data[i].count;continue;}
 
         }
         var myChart = echarts.init(document.getElementById('count_v_information'));
-        console.log("1111111");
+        //console.log("1111111");
         // 指定图表的配置项和数据
         var option = {
             title: {
@@ -337,5 +350,101 @@ function huatu(data,action) {
         };
 
         myChart.setOption(option);
-        console.log("2222222");
+        //console.log("2222222");
+}
+
+
+
+
+
+function show_article_info() {
+    var str = sessionStorage.obj;
+    var user_data = $.parseJSON(str);
+    $.get("http://localhost:8090/get_a_Byahtuor_id?author_id="+user_data.user_id,function (data) {
+        console.log(data);
+        user_show_article_data(data);
+    })
+}
+
+
+function user_show_article_data(data) {
+    var uudiv = document.getElementById("show_user_article");
+    uudiv.innerHTML='';
+    for (var i = 0; i < data.length; i++) {
+        if (i < data.length) {
+            var article_id = data[i].article_id;
+            var article_href = " <div class='article_href_div'>  <a href=\"articecontent.html?article_id=" + article_id + "\">\n" +
+                "        <div class='article_title' id=\"article_title" + article_id + "\">"+data[i].article_title+"</div>\n" +
+                "        <div class='article_summary' id=\"article_content" + article_id + "\">"+data[i].article_summary+"</div>\n" +
+                "    </a><div class='article_create_div'>发布于:"+data[i].article_created+"</div><button onclick=\"delete_article("+article_id +")\" class=\"layui-btn layui-btn-warm\">删除文章</button> </div> <br><br> "
+            console.log(article_href);
+            $('#show_user_article').append(article_href);
+
+        }
+        else{
+            break;
+        }
+    }
+}
+function delete_article(id) {
+
+    $.ajax({
+        url: "http://localhost:8090/delete_article",
+        async : true,
+        type: "post",
+        dataType: "text",
+        data:{
+            article_id:id
+
+        },
+        success: function (data) {
+            show_article_info();
+        }
+    })
+}
+
+
+function show_user_book_deal() {
+    var str = sessionStorage.obj;
+    var user_data = $.parseJSON(str);
+    var action = "g";
+    $.get("http://localhost:8090/get_user_book_deal?user_id="+user_data.user_id+"&action="+action,function (data) {
+        console.log(data);
+        show_details_book(data);
+    })
+
+    $.get("http://localhost:8090/get_deal_By_user_id?user_id="+user_data.user_id,function (data) {
+        console.log("232324324")
+        console.log(data);
+    })
+}
+
+function show_details_book(data) {
+    var book_info = '';
+    var str_book=document.getElementById("user_book_deal_information");
+    str_book.innerHTML='';
+
+    for(var i=0;i<data.length;i++) {
+        var href='';
+        var book_num = data[i].action.split("/").length;
+        for (var j = 1; j < book_num - 1; j++) {
+            var book_id = data[i].action.split("/")[j].split("*")[0];
+            var book_number = data[i].action.split("/")[j].split("*")[1];
+            console.log("222222" + book_info);
+            href = href + "<a href='book_info.html?book_id=" + book_id + "'><div><div>书籍编号："+book_id+"</div><div>购买数量："+book_number+"</div></div></a>";
+
+
+        }
+        var href_all = "<div class='book_deal_a'><div>订单号："+data[i].id+"</div><div>"+href+"</div><button id='delete/"+data[i].id+"' onclick='cancle_deal(this.id)' class=\"layui-btn layui-btn-warm\">取消订单</button><button class=\"layui-btn layui-btn-warm\">确认收货！</button></div>"
+        $("#user_book_deal_information").append(href_all);
+    }
+}
+
+function cancle_deal(id) {
+    var deal_id = id.split("/")[1];
+$.get("http://localhost:8090/delete_book_deal_info?id="+deal_id,function (data) {
+    alert("订单已取消！");
+    show_user_book_deal();
+
+})
 }

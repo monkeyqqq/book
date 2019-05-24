@@ -31,4 +31,17 @@ public interface LogMapper {
     List<LogEntity> admin_get_count_info_by_action(
            String action
     );
+
+    @Select("SELECT * from log WHERE user_id = #{user_id} and action like #{action} order by time desc")
+    @Results({
+            @Result(property = "action",column = "action"),
+            @Result(property = "user_id",column = "user_id"),
+            @Result(property = "id",column = "id"),
+            @Result(property = "time",column = "time")
+    })
+    List<LogEntity> get_user_book_deal(@Param("user_id") int user_id,
+                                       @Param("action") String action);
+
+    @Delete("DELETE FROM log WHERE id=#{id}")
+    void delete_book_deal_info(@Param("id") int id);
 }

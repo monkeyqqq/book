@@ -34,4 +34,11 @@ public class ArticleController {
         ArticleMapper.Update_article_new_comment_info(article_new_comment,article_id);
     }
 
+    @RequestMapping("/delete_article")
+    public void delete_article(
+            @RequestParam(value = "article_id",required = true)String article_id
+    ){
+        ArticleMapper.delete_article(article_id);
+    }
+
 }

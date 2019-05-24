@@ -67,55 +67,87 @@
     <span>用户发表文章数：</span><span id="user_article_num"></span><br>
          <button class="layui-btn layui-btn-sm layui-btn-danger" onclick="shut_down()">注销</button>
      </div>
-    <div class="user_infomation_btu" style="margin-top: 80px" >
-    <button id="infomation_btu" class="layui-btn" onclick="get_new_infomation()">新评论<span class="layui-badge-dot layui-bg-orange"></span></button>
+
+    <div id="all_user_info_area" class="layui-tab">
+        <ul class="layui-tab-title">
+            <li class="layui-this">信息查询</li>
+            <li><a onclick="show_user_book_deal()"> 订单管理</a></li>
+            <li>统计分析</li>
+            <li><a onclick="show_article_info()">文章管理</a></li>
+            <li>订单管理</li>
+        </ul>
+        <div class="layui-tab-content">
+            <div class="layui-tab-item layui-show">
+
+                <div class="user_infomation_btu" style="margin-top: 80px" >
+                    <button id="infomation_btu" class="layui-btn" onclick="get_new_infomation()">新评论<span class="layui-badge-dot layui-bg-orange"></span></button>
 
 
-    <button id="reply_btu" class="layui-btn" onclick="get_new_reply()">新回复<span class="layui-badge-dot layui-bg-orange"></span></button>
+                    <button id="reply_btu" class="layui-btn" onclick="get_new_reply()">新回复<span class="layui-badge-dot layui-bg-orange"></span></button>
 
 
-    <button id="guanzhu_show" onclick="show_guanzhu_btu()" class="layui-btn">显示已关注</button>
+                    <button id="guanzhu_show" onclick="show_guanzhu_btu()" class="layui-btn">显示已关注</button>
 
-    <button id="update_user_info" onclick="Show_old_user_info()" class="layui-btn">更新用户信息</button>
+                    <button id="update_user_info" onclick="Show_old_user_info()" class="layui-btn">更新用户信息</button>
 
-    </div>
-    <div id="show_user_infomation_div" style="margin-top: 0px">
+                </div>
+                <div id="show_user_infomation_div" style="margin-top: 0px">
 
-        <div id="infomation_area" style="display: none"></div>
-        <div id="reply_area" style="display: none"></div>
-        <div id="guanzhu_info" style="display: none"></div>
-        <div id="update_info" style="display: none" class="user_uodate_div">
-            <div id="update_photo" ></div>
-            <p style="font-size: 15px;">请上传头像：</p><input id="update_photo_input" type="file" style="display: none"/>
-            <button type="button" class="layui-btn" id="register_photo_upload" onclick="update_photo_input.click()">
-                <i class="layui-icon">&#xe67c;</i>上传图片
-            </button>
-            <br>
-            <!--<div id="update_name" ></div>-->
-            <p style="font-size: 15px;">请输入新用户名：</p><br><input id="update_name_input" type="text" class="layui-input" style="width: 200px"/>
-            <!--<div id="update_password" ></div>-->
-            <br>
-            <p style="font-size: 15px;">请输入新密码：</p><br><input id="update_password_input" type="password" class="layui-input" style="width: 200px" />
-            <br>
-            <div class="update_button"><button id="updata_buttom" onclick="update_user_info()" class="layui-btn layui-btn-warm">更新</button><button id="concle_updata" onclick="hide_updata_info()" class="layui-btn layui-btn-primary">取消</button></div>
+                    <div id="infomation_area" style="display: none"></div>
+                    <div id="reply_area" style="display: none"></div>
+                    <div id="guanzhu_info" style="display: none"></div>
+                    <div id="update_info" style="display: none" class="user_uodate_div">
+                        <div id="update_photo" ></div>
+                        <p style="font-size: 15px;">请上传头像：</p><input id="update_photo_input" type="file" style="display: none"/>
+                        <button type="button" class="layui-btn" id="register_photo_upload" onclick="update_photo_input.click()">
+                            <i class="layui-icon">&#xe67c;</i>上传图片
+                        </button>
+                        <br>
+                        <!--<div id="update_name" ></div>-->
+                        <p style="font-size: 15px;">请输入新用户名：</p><br><input id="update_name_input" type="text" class="layui-input" style="width: 200px"/>
+                        <!--<div id="update_password" ></div>-->
+                        <br>
+                        <p style="font-size: 15px;">请输入新密码：</p><br><input id="update_password_input" type="password" class="layui-input" style="width: 200px" />
+                        <br>
+                        <div class="update_button"><button id="updata_buttom" onclick="update_user_info()" class="layui-btn layui-btn-warm">更新</button><button id="concle_updata" onclick="hide_updata_info()" class="layui-btn layui-btn-primary">取消</button></div>
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="layui-tab-item">
+                <div id="user_book_deal_information">
+
+                </div>
+            </div>
+            <div class="layui-tab-item">
+                <div class="count_information_div">
+                    <div id ="user_count_info" style="display: none">
+                        <button id="count_information/l" onclick="count_information_show(this.id)" class="layui-btn">个人登录</button>
+                        <button id="count_information/a" onclick="count_information_show(this.id)" class="layui-btn">个人文章</button>
+                        <button id="count_information/b" onclick="count_information_show(this.id)" class="layui-btn">个人书籍</button>
+                        <button id="count_information/v" onclick="count_information_show(this.id)" class="layui-btn">个人视频</button>
+                    </div>
+                    <div id ="admin_count_info" style="display: none">
+                        <button id="admin_count_information/l" onclick="admin_count_information_show(this.id)" class="layui-btn">统计登录</button>
+                        <button id="admin_count_information/a" onclick="admin_count_information_show(this.id)" class="layui-btn">统计文章</button>
+                        <button id="admin_count_information/b" onclick="admin_count_information_show(this.id)" class="layui-btn">统计书籍</button>
+                        <button id="admin_count_information/v" onclick="admin_count_information_show(this.id)" class="layui-btn">统计视频</button>
+                    </div>
+                    <div id="count_v_information" ></div>
+                </div>
+            </div>
+            <div class="layui-tab-item">
+                <div id="show_user_article">
+
+                </div>
+            </div>
+            <div class="layui-tab-item">内容5</div>
         </div>
+    </div>
 
-    </div>
-    <div class="count_information_div">
-    <div id ="user_count_info" style="display: none">
-        <button id="count_information/l" onclick="count_information_show(this.id)" class="layui-btn">个人登录</button>
-        <button id="count_information/a" onclick="count_information_show(this.id)" class="layui-btn">个人文章</button>
-        <button id="count_information/b" onclick="count_information_show(this.id)" class="layui-btn">个人书籍</button>
-        <button id="count_information/v" onclick="count_information_show(this.id)" class="layui-btn">个人视频</button>
-    </div>
-        <div id ="admin_count_info" style="display: none">
-            <button id="admin_count_information/l" onclick="admin_count_information_show(this.id)" class="layui-btn">统计登录</button>
-            <button id="admin_count_information/a" onclick="admin_count_information_show(this.id)" class="layui-btn">统计文章</button>
-            <button id="admin_count_information/b" onclick="admin_count_information_show(this.id)" class="layui-btn">统计书籍</button>
-            <button id="admin_count_information/v" onclick="admin_count_information_show(this.id)" class="layui-btn">统计视频</button>
-        </div>
-    <div id="count_v_information" ></div>
-    </div>
+
+
 </div>
 </div>
 

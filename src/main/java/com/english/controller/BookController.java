@@ -23,27 +23,28 @@ public class BookController {
 
 
     @RequestMapping("/getByNum")
-    public BookEntity getByNum(@RequestParam(value = "num", required = true) String num){
-
+    public BookEntity getByNum(
+            @RequestParam(value = "num", required = true) String num
+    ){
         return BookMapper.getByNum(num);
-
     }
+
 
 
     @RequestMapping("/get_num_Bybookname")
     public int get_num_Bybookname(
             @RequestParam(value = "book_name",required = true) String  book_name
     ){
-
         return BookMapper.get_num_Bybookname("%"+book_name+"%");
     }
 
 
     @RequestMapping("/getByBook_name")
-    public List<BookEntity> getByBook_name(@RequestParam(value = "book_name",required = true) String  book_name,
-                                           @RequestParam(value = "start",required = true) int  start){
+    public List<BookEntity> getByBook_name(
+            @RequestParam(value = "book_name",required = true) String  book_name,
+            @RequestParam(value = "start",required = true) int  start
+    ){
         return BookMapper.getByBook_name("%"+book_name+"%",start);
-
     }
 
 }

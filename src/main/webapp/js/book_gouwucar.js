@@ -9,7 +9,7 @@ function show_book_car() {
         for(var i=0;i<book_length-1;i++){
 
             $.get("http://localhost:8090/getByNum?num=" + user_book.split('/')[i], function (data) {
-                var book_info = "<a href='book_info.html?book_info.html?book_id="+data.num+"'><div class='gouwucar_book'><div class='search_book_num_c'>图书编号：" + data.num + "</div><div class='search_book_photo_c'><img src='../bookimage/"+data.book_photo.split('/')[0]+"' width='150px' height='180px'></div><div class='search_book_name_c'>图书名称："+data.book_name+"</div><div class='search_book_price_c'>单价："+data.price+"元</div> <div class=\"layui-input-block\" style='margin-left: 170px;margin-top: -30px;'><input id='Buy/"+data.num+"' type=\"checkbox\" name=\"购买\" title=\"购买\" lay-skin=\"primary\" value=\"1\" ></div> </div>  </a>"
+                var book_info = "<a href='book_info.html?book_id="+data.num+"'><div class='gouwucar_book'><div class='search_book_num_c'>图书编号：" + data.num + "</div><div class='search_book_photo_c'><img src='../bookimage/"+data.book_photo.split('/')[0]+"' width='150px' height='180px'></div><div class='search_book_name_c'>图书名称："+data.book_name+"</div><div class='search_book_price_c'>单价："+data.price+"元</div> <div class=\"layui-input-block\" style='margin-left: 170px;margin-top: -30px;'><input id='Buy/"+data.num+"' type=\"checkbox\" name=\"购买\" title=\"购买\" lay-skin=\"primary\" value=\"1\" ></div> </div>  </a>"
                 $("#gouwucar_div").append(book_info);
             })
         }

@@ -21,9 +21,7 @@ public class Search_articleController {
             @RequestParam(value="article_keyword",required = true) String article_keyword,
             @RequestParam(value="article_from",required = true) String article_from
             ){
-//        System.out.println("111111111111111111111111111112222222222");
-//        System.out.println(article_keyword);
-//        System.out.println(article_from);
+
         return Search_articleMapper.getByarticle_key_word("%"+article_keyword+"%",article_from);
     }
 
@@ -40,6 +38,7 @@ public class Search_articleController {
     ){
         return Search_articleMapper.get_a_Byahtuor_id(author_id);
     }
+
 
 
     @RequestMapping("/get_a_Byarticle_from")

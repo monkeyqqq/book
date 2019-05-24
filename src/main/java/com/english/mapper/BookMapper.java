@@ -52,9 +52,6 @@ public interface BookMapper {
             @Result(property = "book_category",column = "book_category"),
             @Result(property = "book_introduction",column = "book_introduction")
     })
-    List<BookEntity> getByBook_name(
-            @Param("book_name") String book_name,
-            @Param("start") int start
-            );
+    List<BookEntity> getByBook_name(@Param("book_name") String book_name, @Param("start") int start);
 
 }
