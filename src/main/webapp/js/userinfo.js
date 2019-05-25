@@ -407,44 +407,79 @@ function delete_article(id) {
 function show_user_book_deal() {
     var str = sessionStorage.obj;
     var user_data = $.parseJSON(str);
-    var action = "g";
-    $.get("http://localhost:8090/get_user_book_deal?user_id="+user_data.user_id+"&action="+action,function (data) {
-        console.log(data);
-        show_details_book(data);
-    })
 
-    $.get("http://localhost:8090/get_deal_By_user_id?user_id="+user_data.user_id,function (data) {
-        console.log("232324324")
+    var i='0';
+    // $.get("http://localhost:8090/get_user_book_deal?user_id="+user_data.user_id+"&action="+action,function (data) {
+    //     console.log(data);
+    //     show_details_book(data);
+    // })
+
+    $.get("http://localhost:8090/get_deal_By_user_id?user_id="+user_data.user_id+"&deal_finish="+i,function (data) {
+         console.log("22222222222");
         console.log(data);
+        show_details_book(data,"0");
     })
 }
 
-function show_details_book(data) {
+function show_details_book(data,sss) {
     var book_info = '';
     var str_book=document.getElementById("user_book_deal_information");
     str_book.innerHTML='';
 
     for(var i=0;i<data.length;i++) {
         var href='';
-        var book_num = data[i].action.split("/").length;
-        for (var j = 1; j < book_num - 1; j++) {
-            var book_id = data[i].action.split("/")[j].split("*")[0];
-            var book_number = data[i].action.split("/")[j].split("*")[1];
-            console.log("222222" + book_info);
+        var book_num = data[i].deal_info.split("/").length;
+        for (var j = 0; j < book_num -1; j++) {
+            var book_id = data[i].deal_info.split("/")[j].split("*")[0];
+            var book_number = data[i].deal_info.split("/")[j].split("*")[1];
+            //console.log("222222" + book_info);
             href = href + "<a href='book_info.html?book_id=" + book_id + "'><div><div>书籍编号："+book_id+"</div><div>购买数量："+book_number+"</div></div></a>";
 
-
         }
-        var href_all = "<div class='book_deal_a'><div>订单号："+data[i].id+"</div><div>"+href+"</div><button id='delete/"+data[i].id+"' onclick='cancle_deal(this.id)' class=\"layui-btn layui-btn-warm\">取消订单</button><button class=\"layui-btn layui-btn-warm\">确认收货！</button></div>"
+        if(sss==='0'){
+        var href_all = "<div class='book_deal_a'><div>订单号："+data[i].id+"</div><div>"+href+"</div><button id='delete/"+data[i].id+"' onclick='cancle_deal(this.id)' class=\"layui-btn layui-btn-warm\">取消订单</button><button id='finish/"+data[i].id+"' class=\"layui-btn layui-btn-warm\" onclick='finish_deal(this.id)'>确认收货！</button></div>";
+        }
+        else if(sss==='1'){
+            var href_all = "<div class='book_deal_a'><div>订单号："+data[i].id+"</div><div>"+href+"</div><button id='delete/"+data[i].id+"' onclick='cancle_deal(this.id)' class=\"layui-btn layui-btn-warm\">删除订单</button></div>";
+        }
         $("#user_book_deal_information").append(href_all);
+    }
+    if(sss===0){
+    var all_href = "<a onclick='show_user_history_book_deal()'>查看历史订单</a>"
+    $("#user_book_deal_information").append(all_href);
     }
 }
 
+function show_user_history_book_deal(){
+    var str = sessionStorage.obj;
+    var user_data = $.parseJSON(str);
+
+    var i='1';
+
+    $.get("http://localhost:8090/get_deal_By_user_id?user_id="+user_data.user_id+"&deal_finish="+i,function (data) {
+
+        show_details_book(data,"1");
+    })
+}
+
+
+
+
 function cancle_deal(id) {
     var deal_id = id.split("/")[1];
-$.get("http://localhost:8090/delete_book_deal_info?id="+deal_id,function (data) {
+$.get("http://localhost:8090/Delete_book_deal?id="+deal_id,function (data) {
     alert("订单已取消！");
     show_user_book_deal();
 
 })
+}
+
+function finish_deal(id) {
+    var deal_id = id.split("/")[1];
+    var deal_finish = "1";
+    $.get("http://localhost:8090/Updata_book_deal?deal_finish="+deal_finish+"&id="+deal_id,function (data) {
+        console.log();
+        alert("交易完成！");
+        show_user_book_deal();
+    })
 }

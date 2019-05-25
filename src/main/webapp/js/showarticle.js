@@ -57,15 +57,7 @@ function get_article() {
                 // article_id_info.innerHTML= article_href;
                 $('#article_info').append(article_href);
 
-                // //文章标题和内容显示
-                // var article_title = data[i].article_title;
-                // var article_title_info = document.getElementById("article_title" + article_id);
-                // article_title_info.innerText = article_title;
-                // //文章内容
-                // var article_summary = data[i].article_summary;
-                // //console.log(article_summary);
-                // var article_summary_info = document.getElementById("article_content" + article_id);
-                // article_summary_info.innerText = article_summary;
+
             }
 
 
@@ -102,24 +94,7 @@ function Show_all_article() {
     var start = (page_num -1 )*10;
     var number = 10;
     $.get("http://localhost:8090/get_article_Byarticle_from?article_from="+school_name+"&start="+start+"&number="+number,function (data) {
-        // for (var i = 0; i < data.length; i++) {
-        //     var article_id = data[i].article_id;
-        //     var article_href = " <div class='article_href_div'>  <a href=\"articecontent.html?article_id=" + article_id + "\">\n" +
-        //         "        <div id=\"article_title" + article_id + "\"></div>\n" +
-        //         "        <div id=\"article_content" + article_id + "\"></div>\n" +
-        //         "    </a></div> "
-        //
-        //     $('#article_info').append(article_href);
-        //
-        //     var article_title = data[i].article_title;
-        //     var article_title_info = document.getElementById("article_title" + article_id);
-        //     article_title_info.innerText = article_title;
-        //     //文章内容
-        //     var article_summary = data[i].article_summary;
-        //     //console.log(article_summary);
-        //     var article_summary_info = document.getElementById("article_content" + article_id);
-        //     article_summary_info.innerText = article_summary;
-        // }
+
         console.log(data);
         show_article_data(data);
 
@@ -185,14 +160,14 @@ function guanzhu(){
     var str = sessionStorage.obj;
     var user_data = $.parseJSON(str);
     var guanzhu_name=user_data.user_links;
-    console.log(guanzhu_name);
+    //console.log(guanzhu_name);
     if(guanzhu_name!=null&&guanzhu_name!=''){
     var guanzhu_count=guanzhu_name.split('/').length;
     //console.log(guanzhu_count);
     for(var i=0;i<=guanzhu_count;i++){
         //console.log(guanzhu_name.split("/")[i]);
         if(school_name == guanzhu_name.split("/")[i]){
-            guanzhu_info.innerHTML="<button class=\"layui-btn layui-btn-mini layui-btn-radius layui-btn-disabled\">已关注</button>";
+            guanzhu_info.innerHTML="<button class=\"layui-btn layui-btn-radius layui-btn-primary\" onclick='cancel_guanzhu()'>取消关注</button>";
             break;
         }
         else if(i == guanzhu_count){
@@ -223,10 +198,35 @@ function guanzhu_up(){
         //console.log("1111111111111111111");
         $.get("http://localhost:8090/getByuser_id?user_id=" + user_id, function (data) {
             sessionStorage.obj = JSON.stringify(data);
-
+            guanzhu();
         })
     })
-    window.location.reload();
+
+}
+
+function cancel_guanzhu(){
+    var school_name=decodeURI(location.href.split('=')[1].split('&')[0]);
+    var str = sessionStorage.obj;
+    var user_data = $.parseJSON(str);
+    var guanzhu_name=user_data.user_links;
+    var guanzhu_count=guanzhu_name.split('/').length;
+    var new_links='';
+    for(var i=0;i<guanzhu_count-1;i++){
+        if(guanzhu_name.split('/')[i]===school_name){
+            continue;
+        }
+        else{
+            new_links=new_links+guanzhu_name.split('/')[i]+'/';
+        }
+    }
+    $.get("http://localhost:8090/Update_links?user_id="+user_data.user_id+"&user_links="+new_links,function (data) {
+        //console.log("1111111111111111111");
+        $.get("http://localhost:8090/getByuser_id?user_id=" + user_data.user_id, function (data) {
+            sessionStorage.obj = JSON.stringify(data);
+            guanzhu();
+        })
+    })
+
 }
 
 layui.use('element', function(){

@@ -104,7 +104,6 @@ function showcomments_reply(id) {
         //console.log(data);
         showComments_replyData(data,id);
     })
-
 }
 function hidecomments_reply(id){
     var reply_id= id.split('v')[1];
@@ -179,12 +178,13 @@ function hide_reply_input(id){
     //console.log(reply_content)
     if(reply_content!=''){
     $.get("http://localhost:8090/Create_comments_reply?comments_reply_content="+reply_content+"&comments_reply_author_id=" + reply_author_id+"&comments_author_id=" + comments_author_id+"&article_id="+article_id+"&comments_id="+comment_id,function (data) {
-        //console.log(data);
+
         var comment_read="false";
      $.get("http://localhost:8090/Update_comment_byId?comment_read="+comment_read+"&comment_id="+comment_id,function (data) {
-        // console.log(data);
+       // window.location.reload();
      })
     })
+        $("#"+reply_input).val('');
     }
 
 
@@ -192,7 +192,7 @@ function hide_reply_input(id){
 
     var reply_button  = "reply_di"+id;
     $("#"+reply_button).hide(500);
-    window.location.reload();
+
 
 }
 
@@ -222,13 +222,15 @@ function create_commnets() {
     var read_info = "false";
     if(comment_content!=null&&comment_content!=''){
     $.post("http://localhost:8090/Create_comments",{"comment_content":comment_content,"article_id":article_id,"comment_author_id":author_id},function (data) {
-        console.log(data);
+        //console.log(data);
         $.get("http://localhost:8090/Update_article_new_comment_info?article_new_comment="+read_info+"&article_id="+article_id,function (data) {
-            console.log(data);
+            //console.log(data);
+            window.location.reload();
+            get_article_comments();
         })
     })
     }
-    window.location.reload();
+
 }
 
 //返回上一页

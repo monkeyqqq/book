@@ -2,7 +2,7 @@ package com.english.mapper;
 
 import com.english.entity.Book_dealEntity;
 import org.apache.ibatis.annotations.*;
-import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -21,16 +21,29 @@ public interface Book_dealMapper {
     );
 
 
-    @Select("SELECT * from book_deal WHERE user_id = #{user_id}")
+    @Select("SELECT * from book_deal WHERE user_id = #{user_id} AND deal_finish = #{deal_finish}")
     @Results({
             @Result(property = "id", column = "id"),
-            @Result(property = "user_id", column = "user_id"),
+            @Result(property = "user_id",column = "user_id"),
             @Result(property = "deal_info", column = "deal_info"),
             @Result(property = "customer_phone", column = "customer_phone"),
             @Result(property = "customer_name", column = "customer_name"),
             @Result(property = "customer_adress", column = "customer_adress")
-
     })
-    List<Book_dealEntity> get_deal_By_user_id(@Param("user_id") int user_id);
+    List<Book_dealEntity> get_deal_By_user_id(
+            @Param("user_id")int user_id,
+            @Param("deal_finish") String deal_finish
 
+    );
+
+
+
+    @Delete("DELETE from book_deal WHERE id=#{id}")
+    void Delete_book_deal(int id);
+
+    @Update("UPDATE book_deal SET deal_finish=#{deal_finish} WHERE id=#{id}")
+    void Updata_book_deal(
+            @Param("deal_finish") String deal_finish,
+            @Param("id")int id
+    );
 }
